@@ -1,0 +1,13 @@
+{
+  "load_extensions": {
+    "autosavetime/main": true,
+    "code_prettify/code_prettify": true,
+    "collapsible_headings/main": true,
+    "codefolding/main": true,
+    "nbextensions_configurator/config_menu/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "spellchecker/main": true
+  },
+  "autosavetime_set_starting_interval": true,
+  "autosavetime_starting_interval": "1"
+}
