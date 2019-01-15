@@ -1,0 +1,10 @@
+[user]
+	name = Steven Beales
+	email = stevenbeales@gnmail.com
+	initials=SB
+	
+[push]
+    default = upstream
+		
+[color]
+	ui = auto
