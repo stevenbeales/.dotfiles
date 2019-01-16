@@ -4,3 +4,5 @@
 *.swp
 ~/.dotfiles/secrets.zsh
 .vscode/
+.swo
+vim/.netrwhist
