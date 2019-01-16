@@ -1,7 +1,7 @@
 [user]
-	name = Steven Beales
-	email = stevenbeales@gnmail.com
-	initials=SB
+  name = Steven Beales
+  email = stevenbeales@gnmail.com
+  initials=SB
 	
 [core]
   excludesfile = /Users/sbeales/.gitignore_global
