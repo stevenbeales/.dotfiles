@@ -1,0 +1,120 @@
+# Use this file to configure the Overcommit hooks you wish to use. This will
+# extend the default configuration defined in:
+# https://github.com/brigade/overcommit/blob/master/config/default.yml
+#
+# For a complete list of hooks, see:
+# https://github.com/brigade/overcommit/tree/master/lib/overcommit/hook
+#
+# For a complete list of options that you can use to customize hooks, see:
+# https://github.com/brigade/overcommit#configuration
+#
+# TO avoid resigning overcommit on every configuration change
+verify_signatures: false
+
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: warn
+    requires_files: true
+    required: false
+    exclude: &default_excludes
+      - 'node_modules/**/*'
+      - 'vendor/**/*'
+      - 'db/migrate/*'
+    MyHook:
+      exclude:
+        - *default_excludes
+  AuthorEmail:
+    enabled: true
+  AuthorName:
+    enabled: true
+  BerksfileCheck:
+    enabled: true
+  Brakeman:
+    enabled: false
+  RuboCop:
+    enabled: true
+    on_warn: fail # Treat all warnings as failures
+  Fasterer:
+    enabled: false
+  BundleAudit:
+    enabled: true
+  BundleCheck:
+    enabled: false
+  BundleOutdated:
+    enabled: true
+  CaseConflicts:
+    enabled: true
+  ChamberSecurity:
+    enabled: true
+  Reek:
+    enabled: true
+  ImageOptim:
+    enabled: false
+  Mdl:
+    enabled: false
+  TravisLint:
+    enabled: false
+  JsonSyntax:
+    enabled: true
+  LocalPathsInGemfile:
+    enabled: true
+  Fixme:
+    enabled: true
+  BrokenSymlinks:
+    enabled: false
+  MergeConflicts:
+    enabled: true
+  RubyLint:
+    enabled: false
+  YamlLint:
+    enabled: false
+  YamlSyntax:
+    enabled: true
+
+CommitMsg:
+  ALL:
+    requires_files: false
+  CapitalizedSubject:
+    enabled: true
+  EmptyMessage:
+    enabled: false
+  RussianNovel:
+    enabled: true
+  Spellcheck:
+    enabled: false
+  BundleCheck:
+    enabled: false
+  SingleLineSubject:
+    enabled: true
+  TrailingPeriod:
+    enabled: true
+
+PrePush:
+  ALL:
+    requires_files: false
+    required: false
+  RSpec:
+    enabled: false # enable this if you don't run rspec prior to git
+
+PostCheckout:
+  ALL:
+    quiet: true
+  IndexTags:
+    enabled: false # Generate a tags file with `ctags` each time HEAD changes
+
+PreRebase:
+  ALL:
+    requires_files: false
+    required: false
+
+  MergedCommits:
+    enabled: false
+
+PostMerge:
+  ALL:
+    enabled: false
+    requires_files: false
+
+PostRewrite:
+  ALL:
+    requires_files: false
