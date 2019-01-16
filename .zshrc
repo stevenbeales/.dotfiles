@@ -1,8 +1,7 @@
 
-
-
 #VIM key bindings
 bindkey -v
+bindkey ^F vi-cmd-mode
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -15,9 +14,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-source "${HOME}/.zsh/functions.rc"
+source "${HOME}/.zsh/.functions"
 
-source "${HOME}/.zsh/aliases.rc"
+source "${HOME}/.zsh/.aliases"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -31,9 +30,20 @@ export PATH="$HOME/.rvm/bin:$PATH:"
 
 # Better history
 # Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
+# ignore duplicate history entries
+setopt histignoredups
+
+# automatically enter directories without cd
+setopt auto_cd
+
+# keep more history
+export HISTSIZE=200
+
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+# use incremental search
+bindkey ^R history-incremental-search-backward

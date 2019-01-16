@@ -3,8 +3,11 @@
 	email = stevenbeales@gnmail.com
 	initials=SB
 	
+[core]
+  excludesfile = /Users/sbeales/.gitignore_global
+	
 [push]
-    default = upstream
+  default = upstream
 		
 [color]
 	ui = auto
