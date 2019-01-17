@@ -2,6 +2,8 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+set viminfo+=n~/.vim/viminfo
+
 " don't allow backspacing over everything in insert mode
 set backspace=
 
