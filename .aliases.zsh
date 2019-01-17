@@ -53,6 +53,7 @@ alias sth='git stash'
 alias lg='git log'
 alias u='git add -u'
 alias all='git add .'
+alias gp='git push'
 
 # python shortcuts
 alias pip="python3 -m pip"
