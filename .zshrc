@@ -12,14 +12,18 @@ plugins=(
   ruby sudo osx vscode zsh_reload zsh-syntax-hightlighting
 )
 
+# makes color constants available
+autoload -U colors
+colors
+
 source $ZSH/oh-my-zsh.sh
 
-source "${HOME}/.zsh/.functions"
+[[ -f "$HOME/.dotfiles/.functions" ]] && source "${HOME}/.dotfiles/.functions"
 
-source "${HOME}/.zsh/.aliases"
+[[ -f "$HOME/.dotfiles/.aliases" ]] &&   source "${HOME}/.dotfiles/.aliases"
 
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${DSH}/.iterm2_shell_integration.zsh" && source "${DSH}/.iterm2_shell_integration.zsh"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -36,8 +40,9 @@ setopt histignoredups
 # automatically enter directories without cd
 setopt auto_cd
 
-# keep more history
-export HISTSIZE=200
+# expand functions in the prompt
+setopt prompt_subst
+
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -46,4 +51,4 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 # use incremental search
-bindkey ^R history-incremental-search-backward
+# bindkey ^R history-incremental-search-backward
