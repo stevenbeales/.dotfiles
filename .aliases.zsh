@@ -59,8 +59,6 @@ alias gp='git push'
 alias pip="python3 -m pip"
 alias python='python3'
 alias pythonserver='python3 -m http.server'
-
-# Python
 alias p="ipython"
 alias p2="python2"
 alias p3="python3"
@@ -92,6 +90,7 @@ alias loadsecrets='source ~/.secrets.sh'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
+alias generate_secret="openssl rand -base64 32"
 
 # Editor shortcuts
 alias vi=vim
@@ -118,3 +117,8 @@ alias migrate="rake db:migrate db:test:prepare"
 alias remigrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
 alias gi="gem install"
 alias giv="gem install -v"
+
+
+# Toggle hidden files in Finder
+alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
+alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'

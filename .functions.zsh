@@ -16,3 +16,18 @@ _save_last_cwd() {
 }
 chpwd_functions=( "${chpwd_functions[@]}" _save_last_cwd )
 
+
+function remove-pyc-files {
+    find . -name "*.pyc" -exec rm -rf {} \;
+}
+
+
+# cd into whatever is the forefront Finder window.
+cdf() {  # short for cdfinder
+  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
+}
+
+# Make it easier to search ZSH documentation
+zman() {
+    PAGER="less -g -s '+/^       "$1"'" man zshall
+}
