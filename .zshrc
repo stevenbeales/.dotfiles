@@ -14,9 +14,10 @@ colors
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 for config_file ($DZSH/.*.zsh) source $config_file
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH:"
