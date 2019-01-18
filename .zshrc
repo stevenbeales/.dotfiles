@@ -6,7 +6,8 @@
 plugins=(
   aws brew bundler copyfile dirhistory git rails rvm python 
   ruby sudo osx vscode zsh_reload zsh-syntax-hightlighting
-  colored-man-pages
+  colored-man-pages iterm2 zsh-autosuggestions django xcode
+  postgres
 )
 
 # makes color constants available

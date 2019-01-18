@@ -6,3 +6,6 @@
 .vscode/
 .swo
 vim/.netrwhist
+node_modules
+*.pyc
+
