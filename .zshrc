@@ -6,6 +6,7 @@
 plugins=(
   aws brew bundler copyfile dirhistory git rails rvm python 
   ruby sudo osx vscode zsh_reload zsh-syntax-hightlighting
+  colored-man-pages
 )
 
 # makes color constants available
@@ -17,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 for config_file ($DZSH/.*.zsh) source $config_file
+for config_file ($DZSH/*.zsh) source $config_file
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

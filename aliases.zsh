@@ -9,16 +9,25 @@ alias top="htop"
 #resume downloads
 alias wget='wget -c'
 
+alias mkdir='nocorrect noglob mkdir'
+
 # shortcuts
 alias c='clear'
+alias chrome='open -a "Google Chrome"'
+alias cpi="cp -i"
+alias cpwd='pwd | pbcopy'
 alias cs='clear;ls'
+alias e='code .'
+alias ff="find . -iname"
 alias h='history'
 alias hs='history | grep'
 alias j='autojump'
 alias k='kill'
 alias la='ls -lah'
+alias latest="ls -lt |head"
 alias ll='ls -l'
 alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo '
+alias mvi="mv -i"
 alias myip='curl http://ipecho.net/plain'
 alias null='/dev/null'
 alias o=open
@@ -27,8 +36,10 @@ alias p='cat'
 alias path='echo -e ${PATH//:/\\n}'
 alias pd='pwd'
 alias q='exit'
+alias size="du -h"
 alias t='time'
 alias tlf="tail -f"
+alias x="exit"
 alias zshconfig="code ~/.zshrc"
 
 
@@ -97,8 +108,6 @@ alias vi=vim
 alias svi='sudo vi'
 alias vis='vim "+set si"'
 alias edit='code'
-
-alias chrome='open -a "Google Chrome"'
 
 # Ctags.
 alias gentags='ctags -R .'
