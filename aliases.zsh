@@ -2,8 +2,12 @@
 
 # UNIX commands changed to better or safer versions
 alias bc='bc -l'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias mount='mount |column -t'
 alias rm='rm -i'
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
 alias tar='gtar'
 alias top="htop"
 #resume downloads
@@ -12,8 +16,12 @@ alias wget='wget -c'
 alias mkdir='nocorrect noglob mkdir'
 
 # shortcuts
+# Airport CLI alias
+alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 alias c='clear'
 alias chrome='open -a "Google Chrome"'
+# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 alias cpi="cp -i"
 alias cpwd='pwd | pbcopy'
 alias cs='clear;ls'
@@ -21,11 +29,16 @@ alias e='code .'
 alias ff="find . -iname"
 alias h='history'
 alias hs='history | grep'
+# Show active network interfaces
+alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 alias j='autojump'
 alias k='kill'
 alias la='ls -lah'
 alias latest="ls -lt |head"
 alias ll='ls -l'
+alias localip="ipconfig getifaddr en0"
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo '
 alias mvi="mv -i"
 alias myip='curl http://ipecho.net/plain'
@@ -36,15 +49,20 @@ alias p='cat'
 alias path='echo -e ${PATH//:/\\n}'
 alias pd='pwd'
 alias q='exit'
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
 alias size="du -h"
 alias t='time'
 alias tlf="tail -f"
+# Get week number
+alias week='date +%V'
 alias x="exit"
 alias zshconfig="code ~/.zshrc"
 
 
 # navigation shortcuts
 alias home='cd ~'
+alias dl="cd ~/Downloads"
 alias dtop='cd ~/Desktop'
 alias dbox='cd ~/Dropbox'
 alias gdrive='cd ~/Google\ Drive'

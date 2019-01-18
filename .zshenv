@@ -2,12 +2,14 @@
 
 export EDITOR="code -w"
 
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8';
+
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=30
@@ -16,7 +18,7 @@ export UPDATE_ZSH_DAYS=30
 export CLICOLOR=1
 
 # keep more history
-export HISTSIZE=200
+export HISTSIZE=1000
 
 export HOMEBREW_NO_ANALYTICS=1
 
