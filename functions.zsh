@@ -138,17 +138,6 @@ getcertnames() {
 
 getlinks () { perl -ne 'while ( m/"((www|ftp|http):\/\/.*?)"/gic ) { print $1, "\n"; }' $* }
 
-g() {
-	emulate -LR zsh
-	local p=$argv[-1]
-	[[ -d $p ]] && { p=$p/; argv[-1]=(); } || p=''
-	grep --exclude "*~" --exclude "*.o" --exclude "tags" \
-		--exclude-dir .bzr --exclude-dir .git --exclude-dir .hg --exclude-dir .svn \
-		--exclude-dir CVS --exclude-dir RCS --exclude-dir _darcs \ --exclude-dir _build \
-		-r -P ${@:?regexp missing} $p
-}	
-
-
 gif2png() 
 {
 	if [[ $# = 0 ]]
