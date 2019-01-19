@@ -104,7 +104,6 @@ alias all='git add .'
 alias gp='git push'
 alias gpom='git push origin master'
 
-
 # python shortcuts
 alias pip="python3 -m pip"
 alias python='python3'
