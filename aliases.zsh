@@ -8,12 +8,20 @@ alias mount='mount |column -t'
 alias rm='rm -i'
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-alias tar='gtar'
 alias top="htop"
 #resume downloads
 alias wget='wget -c'
 
 alias mkdir='nocorrect noglob mkdir'
+alias mv="nocorrect mv"
+alias cp="nocorrect cp"
+alias man="nocorrect man"
+
+# /quick-stat/
+alias atime="stat -c '%X - %x - %n'"
+alias mtime="stat -c '%Y - %y - %n'"
+alias owner="stat -c '%U - %u - %n'"
+alias group="stat -c '%G - %g - %n'"
 
 # shortcuts
 # Airport CLI alias
@@ -25,6 +33,7 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias cpi="cp -i"
 alias cpwd='pwd | pbcopy'
 alias cs='clear;ls'
+alias d='dirs -v | head -10'
 alias e='code .'
 alias ff="find . -iname"
 alias h='history'
@@ -73,6 +82,16 @@ alias ...='cd ..; cd ..'
 alias ....='cd ..; cd ..; cd ..'
 alias pv='cd -'
 
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9' 
+
 # git shortcuts
 alias g='git'
 alias st='git status'
@@ -87,7 +106,8 @@ alias gp='git push'
 # python shortcuts
 alias pip="python3 -m pip"
 alias python='python3'
-alias pythonserver='python3 -m http.server'
+alias pypath='python -c "import sys; print sys.path" | tr "," "\n" | grep -v "egg"'
+alias server='python3 -m http.server'
 alias p="ipython"
 alias p2="python2"
 alias p3="python3"

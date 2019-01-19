@@ -27,9 +27,6 @@ zstyle ':completion:*' file-sort modification reverse
 # color code completion!!!!  Wohoo!
 zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
 
-unsetopt LIST_AMBIGUOUS
-setopt  COMPLETE_IN_WORD
-
 # Separate man page sections.  Neat.
 zstyle ':completion:*:manuals' separate-sections true
 

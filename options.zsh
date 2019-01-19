@@ -1,9 +1,13 @@
 
 # automatically enter directories without cd
-setopt auto_cd
+setopt AUTO_CD
+
+setopt AUTO_PUSHD
+
+setopt PUSHD_IGNORE_DUPS
 
 # expand functions in the prompt
-setopt prompt_subst
+setopt PROMPT_SUBST
 
 setopt NO_BEEP
 
@@ -19,7 +23,6 @@ setopt HIST_IGNORE_DUPS
 # Even if there are commands inbetween commands that are the same, still only save the last one
 setopt HIST_IGNORE_ALL_DUPS
 
-# Pretty    Obvious.  Right?
 setopt HIST_REDUCE_BLANKS
 
 # If a line starts with a space, don't save it.
@@ -35,3 +38,9 @@ setopt EXTENDED_HISTORY
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
+
+
+unsetopt LIST_AMBIGUOUS
+setopt  COMPLETE_IN_WORD
+
+setopt EXTENDED_GLOB
