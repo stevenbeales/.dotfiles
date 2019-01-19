@@ -36,3 +36,39 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+bindkey '^[[1~'   beginning-of-line
+bindkey '^[[2~'   overwrite-mode
+bindkey '^[[3~'   delete-char
+bindkey '^[[4~'   end-of-line
+bindkey '^[[5~'   up-history
+bindkey '^[[6~'   down-history
+bindkey '^[[7~'   beginning-of-line
+bindkey '^[[8~'   end-of-line
+bindkey '^[OD'    backward-word
+bindkey '^[OC'    forward-word
+bindkey '^[^[[D'  stack-cd-forward
+bindkey '^[^[[C'  stack-cd-backward
+bindkey '^[[1;3D' stack-cd-forward
+bindkey '^[[1;3C' stack-cd-backward
+bindkey '^[[Z'    reverse-menu-complete
+
+function copy-region-as-kill-deactivate-mark {
+  zle copy-region-as-kill
+  zle set-mark-command -n -1
+}
+
+zle -N copy-region-as-kill-deactivate-mark
+bindkey '^[w' copy-region-as-kill-deactivate-mark
+
+# Select directory and open a ZSH tab completer
+# http://zsh.sourceforge.net/Guide/zshguide06.html#l149
+# http://www.refining-linux.org/archives/40/ZSH-Gem-5-Menu-selection/
+# http://www.cs.elte.hu/zsh-manual/zsh_14.html#SEC52
+#
+# - space: advance to the directory and open it for the completion
+# - backspace: undo the selection
+
+zmodload zsh/complist
+bindkey -M menuselect ' ' accept-and-infer-next-history
+bindkey -M menuselect '^?' undo

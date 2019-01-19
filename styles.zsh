@@ -55,3 +55,8 @@ zstyle ':completion::approximate*:*' prefix-needed false
 # http://forums.gentoo.org/viewtopic-t-204402-start-0.html
 zstyle ':completion:*:processes' command 'ps -au$USER'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
+
+zstyle ':completion:*' completer _complete _correct _approximate
+zstyle ':completion:*' glob on
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle :compinstall filename ~/.zshrc

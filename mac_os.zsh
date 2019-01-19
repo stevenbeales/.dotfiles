@@ -92,3 +92,13 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 # Expand the print dialog by default
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
+
+if [[ "$LC_TERM_PROGRAM" == "iTerm.app" ]] ; then
+
+       bindkey "\e\e[D" backward-word # alt + <-
+       bindkey "\e\e[C" forward-word # alt + -> 
+       
+       bindkey '^[[H' beginning-of-line
+       bindkey '^[[F' end-of-line
+
+fi

@@ -103,6 +103,7 @@ alias u='git add -u'
 alias all='git add .'
 alias gp='git push'
 alias gpom='git push origin master'
+alias gacp=git-add-commit-push
 
 # python shortcuts
 alias pip="python3 -m pip"
@@ -170,3 +171,20 @@ alias giv="gem install -v"
 # Toggle hidden files in Finder
 alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
 alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
+
+alias /quit=exit
+
+# Windows/DOS still in your muscle memory
+alias xcopy='cp'
+alias rd='rmdir'
+alias ren='mv'
+alias deltree='rm -r'
+alias dir='ls'
+alias del='rm'
+alias edit='code'
+alias md='mkdir'
+alias more='less'
+alias move='mv'
+
+# Display processes listening to TCP/IP ports
+alias openports="lsof -n -P -i4TCP|grep LISTEN"

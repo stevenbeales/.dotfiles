@@ -154,6 +154,10 @@ gif2png() {
 	fi
 }
 
+git-add-commit-push() {
+  git add -A && git commit -m "$1" && git push
+}
+
 gitize() { 
 	git init && git add . && git commit -a -m"initial commit" && git gc
 } 
@@ -170,6 +174,16 @@ gz() {
 histgrep () { 
 	fc -fl -m "*(#i)$1*" 1 | grep -i --color $1 
 }
+
+_is_command () {
+	which "$1" 2>&1 > /dev/null
+	return $?
+}
+
+_alias_if_not_exists() {
+  ! _is_command "$1" && alias "$1"="$2"
+}
+
 
 killProcessByName() {
   ps axf | grep $1 | grep -v grep | awk '{print "kill -9 " $1}' | sh
@@ -207,6 +221,30 @@ psgrep() {
 
 remove-pyc-files() {
   find . -name "*.pyc" -exec rm -rf {} \;
+}
+
+search() {
+	if [[ ! -n "$1" ]] ; then
+					echo "Usage: search \"pattern\" \"*.filemask\" \"path\""
+					return
+	fi
+
+	# Did we get path arg
+	if [[ ! -n "$3" ]] ;
+	then
+					search_path="."
+	else
+					search_path="$3"
+	fi
+
+	# LC_CTYPE="posix" 20x increases performance for ASCII search
+	# https://twitter.com/jlaurila/status/86750682094374912
+
+	# We use specially tuned GREP colors - make sure you have GNU grep on OSX
+	# https://github.com/miohtama/ztanesh/blob/master/README.rst
+
+	GREP_COLORS="ms=01;37:mc=01;37:sl=:cx=01;30:fn=35:ln=32:bn=32:se=36" LC_CTYPE=POSIX \
+	grep -Ri "$1" --line-number --before-context=3 --after-context=3 --color=always --include="$2" --exclude=".*" "$search_path"/*
 }
 
 showoptions() {                                                                                                                                                                                                     
