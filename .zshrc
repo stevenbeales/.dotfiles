@@ -3,10 +3,9 @@
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  aws brew bundler copyfile dirhistory pip git rails rvm python 
-  ruby sudo osx vscode zsh_reload zsh-syntax-hightlighting
-  colored-man-pages iterm2 zsh-autosuggestions django xcode
-  postgres
+  brew bundler dirhistory pip git rails rvm python 
+  ruby osx vscode zsh_reload zsh-syntax-hightlighting
+  colored-man-pages iterm2 zsh-autosuggestions django postgres
 )
 
 # makes color constants available
