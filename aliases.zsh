@@ -31,6 +31,7 @@ alias chrome='open -a "Google Chrome"'
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 alias cpi="cp -i"
+alias cppcompile='c++ -std=c++11 -stdlib=libc++'
 alias cpwd='pwd | pbcopy'
 alias cs='clear;ls'
 alias d='dirs -v | head -10'

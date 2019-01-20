@@ -4,7 +4,7 @@
   initials=SB
 	
 [core]
-  excludesfile = /Users/sbeales/.gitignore_global
+	excludesfile = /Users/sbeales/.gitignore_global
   pager = less -FRSX
 	
 [push]
@@ -98,6 +98,9 @@
 [help]
   autocorrect = 1
 
+[credential]
+    # cache creds (git help credential-cache)
+  helper = cache
 
 [apply]
 
@@ -117,3 +120,13 @@
 
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
+
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true

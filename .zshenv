@@ -22,6 +22,11 @@ export HISTSIZE=1000
 
 export HOMEBREW_NO_ANALYTICS=1
 
+export MYCODE="$HOME/code"
+
+export JAVA_HOME=/usr/bin
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

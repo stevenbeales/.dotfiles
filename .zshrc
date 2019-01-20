@@ -3,7 +3,7 @@
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  aws brew bundler copyfile dirhistory git rails rvm python 
+  aws brew bundler copyfile dirhistory pip git rails rvm python 
   ruby sudo osx vscode zsh_reload zsh-syntax-hightlighting
   colored-man-pages iterm2 zsh-autosuggestions django xcode
   postgres
@@ -25,5 +25,3 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PATH="$HOME/.rvm/bin:$PATH:"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-cd $HOME
