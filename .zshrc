@@ -20,6 +20,9 @@ for config_file ($ZDOTDIR/.*.zsh) source $config_file
 for config_file ($ZDOTDIR/*.zsh) source $config_file
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+export PATH="$HOME/bin:$PATH"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH:"
 
