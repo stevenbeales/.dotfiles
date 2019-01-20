@@ -1,4 +1,3 @@
-# personal aliases
 
 # UNIX commands changed to better or safer versions
 alias bc='bc -l'
@@ -69,7 +68,6 @@ alias week='date +%V'
 alias x="exit"
 alias zshconfig="code ~/.zshrc"
 
-
 # navigation shortcuts
 alias home='cd ~'
 alias dl="cd ~/Downloads"
@@ -131,13 +129,11 @@ alias pprint='python -c "import pprint, sys, ast; pprint.pprint(ast.literal_eval
 alias pprint_clipboard='pbpaste | pprint'
 alias prp="pipenv run python"
 
-
 # Shortcuts to vimrc and bashrc
 alias vimrc='code ~/.dotfiles/.vimrc'
 alias zshrc='code ~/.dotfiles/.zshrc'
 alias loadzsh='source ~/.dotfiles/.zshrc'
 alias loadsecrets='source ~/.secrets.sh'
-
 
 alias now='date +"%T"'
 alias nowtime=now
@@ -167,7 +163,6 @@ alias migrate="rake db:migrate db:test:prepare"
 alias remigrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
 alias gi="gem install"
 alias giv="gem install -v"
-
 
 # Toggle hidden files in Finder
 alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'

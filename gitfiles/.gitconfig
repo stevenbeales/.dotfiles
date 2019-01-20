@@ -95,6 +95,7 @@
 
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
+  
 [help]
   autocorrect = 1
 
@@ -103,21 +104,18 @@
   helper = cache
 
 [apply]
-
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
-[merge]
 
+[merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
   
 [diff]
-
 	# Detect copies as well as renames
 	renames = copies
 
 [diff "bin"]
-
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
 
@@ -127,6 +125,7 @@
   smudge = git media smudge %f
 
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
   required = true
+	process = git-lfs filter-process

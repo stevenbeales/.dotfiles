@@ -84,7 +84,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Enable “Do Not Track”
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
-
 # Use the system-native print preview dialog
 defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome.canary DisablePrintPreview -bool true
@@ -95,10 +94,10 @@ defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool t
 
 if [[ "$LC_TERM_PROGRAM" == "iTerm.app" ]] ; then
 
-       bindkey "\e\e[D" backward-word # alt + <-
-       bindkey "\e\e[C" forward-word # alt + -> 
+  bindkey "\e\e[D" backward-word # alt + <-
+  bindkey "\e\e[C" forward-word # alt + -> 
        
-       bindkey '^[[H' beginning-of-line
-       bindkey '^[[F' end-of-line
+  bindkey '^[[H' beginning-of-line
+  bindkey '^[[F' end-of-line
 
 fi
