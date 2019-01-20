@@ -20,14 +20,14 @@ set output-meta on
 set convert-meta off
 
 $if mode=vi
-    set keymap vi-command
-    "gg": beginning-of-history
-    "G": end-of-history
+  set keymap vi-command
+  "gg": beginning-of-history
+  "G": end-of-history
 
-    set keymap vi-insert
-    "\C-l": clear-screen
-    "\C-w": backward-kill-word
-    # auto-complete from the history
-    "\C-k": history-search-backward
-    "\C-j": history-search-forward
+  set keymap vi-insert
+  "\C-l": clear-screen
+  "\C-w": backward-kill-word
+  # auto-complete from the history
+  "\C-k": history-search-backward
+  "\C-j": history-search-forward
 $endif
