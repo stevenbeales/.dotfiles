@@ -1,10 +1,18 @@
 
 # UNIX commands changed to better or safer versions
+alias ag='ag -f --hidden'
 alias bc='bc -l'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias mount='mount |column -t'
-alias rm='rm -i'
+# mv, rm, cp
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
+
+alias cask='brew cask'
+alias where='which'
+
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 alias top="htop"
@@ -37,6 +45,7 @@ alias d='dirs -v | head -10'
 alias e='code .'
 alias ff="find . -iname"
 alias h='history'
+alias hosts='sudo $EDITOR /etc/hosts'
 alias hs='history | grep'
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"

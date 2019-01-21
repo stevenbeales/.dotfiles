@@ -4,6 +4,11 @@ cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
 
+# Copy w/ progress
+cp_p () {
+  rsync -WavP --human-readable --progress $1 $2
+}
+
 cx () { 
 	chmod +x $* 
 }
@@ -192,18 +197,23 @@ histgrep () {
 	fc -fl -m "*(#i)$1*" 1 | grep -i --color $1 
 }
 
-_is_command () {
-	which "$1" 2>&1 > /dev/null
-	return $?
-}
-
-_alias_if_not_exists() {
-  ! _is_command "$1" && alias "$1"="$2"
-}
-
-
 killProcessByName() {
   ps axf | grep $1 | grep -v grep | awk '{print "kill -9 " $1}' | sh
+}
+
+# git commit browser. needs fzf
+log() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
+      --bind "ctrl-m:execute:
+                echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R'"
+}
+
+# direct it all to /dev/null
+function nullify() {
+  "$@" >/dev/null 2>&1
 }
 
 ## History wrapper
@@ -347,7 +357,30 @@ up() {
   fi
 }
 
+# whois a domain or a URL
+function whois() {
+	local domain=$(echo "$1" | awk -F/ '{print $3}') # get domain from URL
+	if [ -z $domain ] ; then
+		domain=$1
+	fi
+	echo "Getting whois record for: $domain …"
+
+	# avoid recursion
+					# this is the best whois server
+													# strip extra fluff
+	/usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
+}
+
 # Make it easier to search ZSH documentation
 zman() {
     PAGER="less -g -s '+/^       "$1"'" man zshall
+}
+
+_is_command () {
+	which "$1" 2>&1 > /dev/null
+	return $?
+}
+
+_alias_if_not_exists() {
+  ! _is_command "$1" && alias "$1"="$2"
 }
