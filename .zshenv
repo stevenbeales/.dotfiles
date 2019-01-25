@@ -1,8 +1,5 @@
 # sourced from ~/.zshenv
 
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
 export EDITOR="code -w"
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.

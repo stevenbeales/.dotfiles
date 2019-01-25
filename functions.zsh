@@ -13,19 +13,6 @@ cx () {
 	chmod +x $* 
 }
 
-## get the timings for a curl to a URL
-## usage: curltime $url
-curltime(){
-  curl -w "   time_namelookup:  %{time_namelookup}\n\
-      time_connect:  %{time_connect}\n\
-   time_appconnect:  %{time_appconnect}\n\
-  time_pretransfer:  %{time_pretransfer}\n\
-     time_redirect:  %{time_redirect}\n\
-time_starttransfer:  %{time_starttransfer}\n\
---------------------------\n\
-        time_total:  %{time_total}\n" -o /dev/null -s "$1"
-}
-
 dict() {
   grep "$@" /usr/share/dict/words
 }
@@ -42,13 +29,7 @@ dirsize() {
 	echo "Total: " $(du -sh $dir 2>/dev/null | awk '{print $1}')
 }
 
-# Use Git’s colored diff when available
-hash git &>/dev/null;
-if [ $? -eq 0 ]; then
-	function diff() {
-		git diff --no-index --color-words "$@";
-	}
-fi;
+
 
 extract () {
 	if [ -f $1 ] ; then
@@ -75,37 +56,6 @@ fixperms(){
     find . \( -name "*.sh" -or -type d \) -exec chmod 755 {} \; && find . -type f ! -name "*.sh" -exec chmod 644 {} \;
 }
 
-folsym() {
-	if [[ -e $1 || -h $1 ]]; then
-		file=$1
-	else
-		file=`which $1`
-	fi
-	if
-		if [[ -e $file || -L $file ]]; then
-			if [[ -L $file ]]; then
-				echo `ls -ld $file | perl -ane 'print $F[7]'` '->'
-				folsym `perl -le '$file = $ARGV[0];
-				$dest = readlink $file;
-				if ($dest !~ m{^/}) {
-					$file =~ s{(/?)[^/]*$}{$1$dest};
-				} else {
-				$file = $dest;
-			}
-			$file =~ s{/{2,}}{/}g;
-			while ($file =~ s{[^/]+/\.\./}{}) {
-				;
-			}
-			$file =~ s{^(/\.\.)+}{};
-			print $file' $file`
-		else
-			ls -d $file
-		fi
-	else
-		echo $file
-	fi
-}
-
 funlist() {
   print -l ${(ok)functions}
 }
@@ -121,41 +71,6 @@ fs() {
 		du $arg -- "$@";
 	else
 		du $arg .[^.]* ./*;
-	fi;
-}
-
-
-# Show all the names (CNs and SANs) listed in the SSL certificate
-# for a given domain
-getcertnames() {
-	if [ -z "${1}" ]; then
-		echo "ERROR: No domain specified.";
-		return 1;
-	fi;
-
-	local domain="${1}";
-	echo "Testing ${domain}…";
-	echo ""; # newline
-
-	local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
-		| openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
-
-	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-		local certText=$(echo "${tmp}" \
-			| openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
-			no_serial, no_sigdump, no_signame, no_validity, no_version");
-		echo "Common Name:";
-		echo ""; # newline
-		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
-		echo ""; # newline
-		echo "Subject Alternative Name(s):";
-		echo ""; # newline
-		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
-		return 0;
-	else
-		echo "ERROR: Certificate not found.";
-		return 1;
 	fi;
 }
 
@@ -176,14 +91,6 @@ gif2png() {
 	fi
 }
 
-git-add-commit-push() {
-  git add -A && git commit -m "$1" && git push
-}
-
-gitize() { 
-	git init && git add . && git commit -a -m"initial commit" && git gc
-} 
-
 # Compare original and gzipped file size
 gz() {
 	local origsize=$(wc -c < "$1");
@@ -199,16 +106,6 @@ histgrep () {
 
 killProcessByName() {
   ps axf | grep $1 | grep -v grep | awk '{print "kill -9 " $1}' | sh
-}
-
-# git commit browser. needs fzf
-log() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
-      --bind "ctrl-m:execute:
-                echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R'"
 }
 
 # direct it all to /dev/null
@@ -262,10 +159,6 @@ psgrep() {
 	else
 			echo "!! Need name to grep for"
 	fi
-}
-
-remove-pyc-files() {
-  find . -name "*.pyc" -exec rm -rf {} \;
 }
 
 search() {
@@ -355,20 +248,6 @@ up() {
       done
       cd $CDSTR
   fi
-}
-
-# whois a domain or a URL
-function whois() {
-	local domain=$(echo "$1" | awk -F/ '{print $3}') # get domain from URL
-	if [ -z $domain ] ; then
-		domain=$1
-	fi
-	echo "Getting whois record for: $domain …"
-
-	# avoid recursion
-					# this is the best whois server
-													# strip extra fluff
-	/usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
 }
 
 # Make it easier to search ZSH documentation
