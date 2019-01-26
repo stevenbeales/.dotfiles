@@ -3,7 +3,6 @@ remove-pyc-files() {
   find . -name "*.pyc" -exec rm -rf {} \;
 }
 
-
 # python shortcuts
 alias pip="python3 -m pip"
 alias python='python3'

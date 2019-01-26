@@ -44,3 +44,31 @@ unsetopt LIST_AMBIGUOUS
 setopt  COMPLETE_IN_WORD
 
 setopt EXTENDED_GLOB
+
+# display PID when suspending processes as well
+setopt longlistjobs
+
+# report the status of backgrounds jobs immediately
+setopt notify
+
+# whenever a command completion is attempted, make sure the entire command path
+# is hashed first.
+setopt hash_list_all
+
+# not just at the end
+setopt completeinword
+
+# Don't send SIGHUP to background processes when the shell exits.
+setopt nohup
+
+# * shouldn't match dotfiles. ever.
+setopt noglobdots
+
+# use zsh style word splitting
+setopt noshwordsplit
+
+# don't error out when unset parameters are used
+setopt unset
+
+# automatically remove duplicates from these arrays
+typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH

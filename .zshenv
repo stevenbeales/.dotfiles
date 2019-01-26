@@ -26,6 +26,8 @@ export MYCODE="$HOME/code"
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
 
+export PAGER=${PAGER:-less}
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -56,3 +58,19 @@ PURPLE="\[\033[1;35m\]"
 CYAN="\[\033[1;36m\]"
 BROWN="\[\033[0;33m\]"
 COLOR_NONE="\[\033[0m\]"
+
+# support colors in less
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# report about cpu-/system-/user-time of command if running longer than
+# 5 seconds
+REPORTTIME=5
+
+# watch for everyone but me and root
+watch=(notme root)

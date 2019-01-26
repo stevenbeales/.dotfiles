@@ -1,12 +1,109 @@
+ #f5# List files which have been accessed within the last {\it n} days, {\it n} defaults to 1
+accessed () {
+    emulate -L zsh
+    print -l -- *(a-${1:-1})
+}
+
+any () {
+    emulate -L zsh
+    unsetopt KSH_ARRAYS
+    if [[ -z "$1" ]] ; then
+        echo "any - grep for process(es) by keyword" >&2
+        echo "Usage: any <keyword>" >&2 ; return 1
+    else
+        ps xauwww | grep -i "${grep_options[@]}" "[${1[1]}]${1[2,-1]}"
+    fi
+}
+
+#f5# Backup \kbd{file_or_folder {\rm to} file_or_folder\_timestamp}
+bk () {
+    emulate -L zsh
+    local current_date=$(date -u "+%Y%m%dT%H%M%SZ")
+    local clean keep move verbose result all to_bk
+    setopt extended_glob
+    keep=1
+    while getopts ":hacmrv" opt; do
+        case $opt in
+            a) (( all++ ));;
+            c) unset move clean && (( ++keep ));;
+            m) unset keep clean && (( ++move ));;
+            r) unset move keep && (( ++clean ));;
+            v) verbose="-v";;
+            h) <<__EOF0__
+bk [-hcmv] FILE [FILE ...]
+bk -r [-av] [FILE [FILE ...]]
+Backup a file or folder in place and append the timestamp
+Remove backups of a file or folder, or all backups in the current directory
+
+Usage:
+-h    Display this help text
+-c    Keep the file/folder as is, create a copy backup using cp(1) (default)
+-m    Move the file/folder, using mv(1)
+-r    Remove backups of the specified file or directory, using rm(1). If none
+      is provided, remove all backups in the current directory.
+-a    Remove all (even hidden) backups.
+-v    Verbose
+
+The -c, -r and -m options are mutually exclusive. If specified at the same time,
+the last one is used.
+
+The return code is the sum of all cp/mv/rm return codes.
+__EOF0__
+return 0;;
+            \?) bk -h >&2; return 1;;
+        esac
+    done
+    shift "$((OPTIND-1))"
+    if (( keep > 0 )); then
+					for to_bk in "$@"; do
+							cp $verbose -pR "${to_bk%/}" "${to_bk%/}_$current_date"
+							(( result += $? ))
+					done
+		elif (( move > 0 )); then
+        while (( $# > 0 )); do
+            mv $verbose "${1%/}" "${1%/}_$current_date"
+            (( result += $? ))
+            shift
+        done
+    elif (( clean > 0 )); then
+        if (( $# > 0 )); then
+            for to_bk in "$@"; do
+                rm $verbose -rf "${to_bk%/}"_[0-9](#c8)T([0-1][0-9]|2[0-3])([0-5][0-9])(#c2)Z
+                (( result += $? ))
+            done
+        else
+            if (( all > 0 )); then
+                rm $verbose -rf *_[0-9](#c8)T([0-1][0-9]|2[0-3])([0-5][0-9])(#c2)Z(D)
+            else
+                rm $verbose -rf *_[0-9](#c8)T([0-1][0-9]|2[0-3])([0-5][0-9])(#c2)Z
+            fi
+            (( result += $? ))
+        fi
+    fi
+    return $result
+}
 
 # cd into whatever is the forefront Finder window.
 cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
 
+#f5# Create temporary directory and \kbd{cd} to it
+cdt () {
+    builtin cd "$(mktemp -d)"
+    builtin pwd
+}
+
 # Copy w/ progress
 cp_p () {
   rsync -WavP --human-readable --progress $1 $2
+}
+
+
+#f5# List files which have been changed within the last {\it n} days, {\it n} defaults to 1
+changed () {
+    emulate -L zsh
+    print -l -- *(c-${1:-1})
 }
 
 cx () { 
@@ -28,8 +125,6 @@ dirsize() {
 	echo
 	echo "Total: " $(du -sh $dir 2>/dev/null | awk '{print $1}')
 }
-
-
 
 extract () {
 	if [ -f $1 ] ; then
@@ -100,6 +195,47 @@ gz() {
 	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
+#f1# Provides useful information on globbing
+H-Glob () {
+	echo -e "
+	/      directories
+	.      plain files
+	@      symbolic links
+	=      sockets
+	p      named pipes (FIFOs)
+	*      executable plain files (0100)
+	%      device files (character or block special)
+	%b     block special files
+	%c     character special files
+	r      owner-readable files (0400)
+	w      owner-writable files (0200)
+	x      owner-executable files (0100)
+	A      group-readable files (0040)
+	I      group-writable files (0020)
+	E      group-executable files (0010)
+	R      world-readable files (0004)
+	W      world-writable files (0002)
+	X      world-executable files (0001)
+	s      setuid files (04000)
+	S      setgid files (02000)
+	t      files with the sticky bit (01000)
+
+  print *(m-1)          # Files modified up to a day ago
+  print *(a1)           # Files accessed a day ago
+  print *(@)            # Just symlinks
+  print *(Lk+50)        # Files bigger than 50 kilobytes
+  print *(Lk-50)        # Files smaller than 50 kilobytes
+  print **/*.c          # All *.c files recursively starting in \$PWD
+  print **/*.c~file.c   # Same as above, but excluding 'file.c'
+  print (foo|bar).*     # Files starting with 'foo' or 'bar'
+  print *~*.*           # All Files that do not contain a dot
+  chmod 644 *(.^x)      # make all plain non-executable files publically readable
+  print -l *(.c|.h)     # Lists *.c and *.h
+  print **/*(g:users:)  # Recursively match all files that are owned by group 'users'
+  echo /proc/*/cwd(:h:t:s/self//) # Analogous to >ps ax | awk '{print $1}'<"
+}
+alias help-zshglob=H-Glob
+
 histgrep () { 
 	fc -fl -m "*(#i)$1*" 1 | grep -i --color $1 
 }
@@ -108,8 +244,14 @@ killProcessByName() {
   ps axf | grep $1 | grep -v grep | awk '{print "kill -9 " $1}' | sh
 }
 
+#f5# List files which have been modified within the last {\it n} days, {\it n} defaults to 1
+modified () {
+    emulate -L zsh
+    print -l -- *(m-${1:-1})
+}
+
 # direct it all to /dev/null
-function nullify() {
+nullify() {
   "$@" >/dev/null 2>&1
 }
 
@@ -150,6 +292,11 @@ plocale() {
 
 prepend() { 
 	[ -d "$2" ] && eval $1=\"$2\$\{$1:+':'\$$1\}\" && export $1 ;
+}
+
+# zsh profiling
+profile () {
+    ZSH_PROFILE_RC=1 zsh "$@"
 }
 
 psgrep() {
@@ -250,6 +397,20 @@ up() {
   fi
 }
 
+# Check if we can read given files and source those we can.
+xsource () {
+    if (( ${#argv} < 1 )) ; then
+        printf 'usage: xsource FILE(s)...\n' >&2
+        return 1
+    fi
+
+    while (( ${#argv} > 0 )) ; do
+        [[ -r "$1" ]] && source "$1"
+        shift
+    done
+    return 0
+}
+
 # Make it easier to search ZSH documentation
 zman() {
     PAGER="less -g -s '+/^       "$1"'" man zshall
@@ -263,3 +424,4 @@ _is_command () {
 _alias_if_not_exists() {
   ! _is_command "$1" && alias "$1"="$2"
 }
+

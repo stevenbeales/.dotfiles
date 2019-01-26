@@ -1,0 +1,54 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.6.0
+branches:
+  only:
+    - master
+addons:
+  postgresql: "10.0"
+ 
+bundler_args:
+  --without development production --jobs=2
+
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+    - RACK_ENV=test
+    - CC_TEST_REPORTER_ID=TBD_CC_ID
+    - RUBY_GC_MALLOC_LIMIT=90000000
+
+cache: bundler
+
+before_script:
+  - psql -c 'CREATE DATABASE [TBD_DATABASE_NAME]' -U postgres
+  - psql -c "CREATE USER [TBD_USER] WITH PASSWORD '[TBD_PASSWORD]';" -U postgres
+  - "gem update --system"
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+before_install:
+  - gem update bundler # ensure bundler up to date
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc" # ensure bundle does not install docs
+
+script:
+  - bundle exec rake --version
+  - RACK_ENV=test bundle exec rake db:migrate
+  - RACK_ENV=test bundle exec rake spec
+  - bundle exec rake bundle:audit
+  - bundle exec rubocop
+  - bundle exec ruby-audit check
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json # Format backend coverage
+  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 1                  # Sum coverage parts into coverage/codeclimate.json (we have no front-end coverage)
+  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi  # Upload coverage/codeclimate.json
+
+notifications:
+  email:
+    recipients:
+     - [TBD_EMAIL]
+    on_success: never
+    on_failure: change

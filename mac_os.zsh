@@ -100,3 +100,33 @@ if [[ "$LC_TERM_PROGRAM" == "iTerm.app" ]] ; then
   bindkey '^[[F' end-of-line
 
 fi
+
+isdarwin () {
+    [[ $GRML_OSTYPE == "Darwin" ]]
+}
+
+
+
+batterydarwin () {
+  GRML_BATTERY_LEVEL=''
+  local -a table
+  table=( ${$(pmset -g ps)[(w)7,8]%%(\%|);} )
+  if [[ -n $table[2] ]] ; then
+      case $table[2] in
+          charging)
+              GRML_BATTERY_LEVEL+=" ^"
+              ;;
+          discharging)
+              if (( $table[1] < 20 )) ; then
+                  GRML_BATTERY_LEVEL+=" !v"
+              else
+                  GRML_BATTERY_LEVEL+=" v"
+              fi
+              ;;
+          *)
+              GRML_BATTERY_LEVEL+=" ="
+              ;;
+      esac
+      GRML_BATTERY_LEVEL+="$table[1]%%"
+  fi
+}
