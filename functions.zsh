@@ -147,6 +147,8 @@ extract () {
 	fi
 }
 
+f() { find . -iname "*$1*" ${@:2} }
+
 fixperms(){
     find . \( -name "*.sh" -or -type d \) -exec chmod 755 {} \; && find . -type f ! -name "*.sh" -exec chmod 644 {} \;
 }
@@ -308,6 +310,8 @@ psgrep() {
 	fi
 }
 
+r() { grep "$1" ${@:2} -R . }
+
 search() {
 	if [[ ! -n "$1" ]] ; then
 					echo "Usage: search \"pattern\" \"*.filemask\" \"path\""
@@ -331,6 +335,8 @@ search() {
 	GREP_COLORS="ms=01;37:mc=01;37:sl=:cx=01;30:fn=35:ln=32:bn=32:se=36" LC_CTYPE=POSIX \
 	grep -Ri "$1" --line-number --before-context=3 --after-context=3 --color=always --include="$2" --exclude=".*" "$search_path"/*
 }
+
+setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }  # csh compatibility
 
 showoptions() {                                                                                                                                                                                                     
   local k                                                                                                                                                                                                           

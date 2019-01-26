@@ -72,3 +72,8 @@ setopt unset
 
 # automatically remove duplicates from these arrays
 typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
+
+unsetopt bgnice autoparamslash
+
+setopt complete_aliases
+

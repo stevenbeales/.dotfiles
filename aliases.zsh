@@ -42,6 +42,7 @@ alias cpi="cp -i"
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
 alias cpwd='pwd | pbcopy'
 alias cs='clear;ls'
+alias ct="ctags -R --exclude=.git --exclude=node_modules"
 alias d='dirs -v | head -10'
 alias e='code .'
 alias ff="find . -iname"
@@ -175,3 +176,9 @@ alias openports="lsof -n -P -i4TCP|grep LISTEN"
 
 alias :q="echo 'you are not in Vi anymore' ; echo ''"
 alias :w="echo 'you are not in Vi anymore' ; echo ''"
+
+# Global aliases -- These do not have to be
+# at the beginning of the command line.
+alias -g M='|more'
+alias -g H='|head'
+alias -g T='|tail'

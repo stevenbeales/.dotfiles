@@ -72,3 +72,12 @@ bindkey '^[w' copy-region-as-kill-deactivate-mark
 zmodload zsh/complist
 bindkey -M menuselect ' ' accept-and-infer-next-history
 bindkey -M menuselect '^?' undo
+
+bindkey '^X^Z' universal-argument ' ' magic-space
+bindkey '^X^A' vi-find-prev-char-skip
+bindkey '^Xa' _expand_alias
+bindkey '^Z' accept-and-hold
+bindkey -s '\M-/' \\\\
+bindkey -s '\M-=' \|
+bindkey ' ' magic-space    # also do history expansion on space
+bindkey '^I' complete-word # complete on tab, leave expansion to _expand

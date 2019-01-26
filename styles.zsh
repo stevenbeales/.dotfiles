@@ -9,8 +9,23 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
+
+# solution suggested by Bart Schaefer in http://www.zsh.org/mla/users/2016/msg00466.html
+_expand_alias_and_complete() {
+  if [[ -o complete_aliases && -n $aliases[$words[1]] ]]; then
+    words[1]=( $aliases[$words[1]] )
+    _complete
+  else
+    return 1
+  fi
+}
+
 # https://github.com/spicycode/ze-best-zsh-config/blob/master/.zsh/completion.zsh
-zstyle ':completion:*' completer _expand _complete _approximate _ignored
+zstyle ':completion:*' completer _expand _complete _approximate _ignored _expand_alias_and_complete
+
+
+# offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # generate descriptions with magic.
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -56,7 +71,27 @@ zstyle ':completion::approximate*:*' prefix-needed false
 zstyle ':completion:*:processes' command 'ps -au$USER'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
 
-zstyle ':completion:*' completer _complete _correct _approximate
 zstyle ':completion:*' glob on
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# allow one error for every three characters typed in approximate completer
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+    
+# insert all expansions for expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
 zstyle :compinstall filename ~/.zshrc
+
+zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:*' enable git #svn cvs
+
+# ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
+zstyle '*' single-ignored show
+# }}}

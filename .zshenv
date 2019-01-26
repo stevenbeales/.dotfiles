@@ -28,6 +28,14 @@ export JAVA_HOME="$(/usr/libexec/java_home)"
 
 export PAGER=${PAGER:-less}
 
+export GITHUB_USER="stevenbeales"
+
+export LSCOLORS=Gxfxcxdxbxegedabagacad
+export LS_COLORS=Gxfxcxdxbxegedabagacad
+
+
+export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

@@ -1,0 +1,40 @@
+
+languages:
+   Ruby: true
+   JavaScript: false
+   Python: false
+   PHP: false
+
+engines:
+  rubocop:
+    enabled: true
+    channel: rubocop-0-54
+
+plugins:
+  bundler-audit:
+    enabled: true
+  fixme:
+    enabled: true
+     config:
+      strings:
+      - FIXME
+      - BUG
+      - CUSTOM
+      - TODO
+  rubocop:
+    enabled: true
+
+exclude_paths:
+ - "lib/tasks/*"
+ - "script/*"
+ - "db//*/*"
+ - "vendor//*/*"
+ - "bin/*"
+ - "log/*"
+ - "public//*/*"
+ - "coverage//*/*"
+ - "doc//*/*"
+
+
+
+
