@@ -20,7 +20,10 @@ colors
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# ensure unique paths within PATH
+typeset -U path
+
+ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 for config_file ($ZDOTDIR/.*.zsh) source $config_file
 for config_file ($ZDOTDIR/*.zsh) source $config_file
@@ -33,3 +36,5 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH:"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+attach_to_tmux

@@ -7,6 +7,7 @@ alias sth='git stash'
 alias lg='git log'
 alias u='git add -u'
 alias all='git add .'
+alias gbr="git remote prune origin && git branch -r"
 alias gp='git push'
 alias gpom='git push origin master'
 alias gacp=git-add-commit-push

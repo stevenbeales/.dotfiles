@@ -44,9 +44,12 @@ alias cpwd='pwd | pbcopy'
 alias cs='clear;ls'
 alias ct="ctags -R --exclude=.git --exclude=node_modules"
 alias d='dirs -v | head -10'
+alias dotf="cd $HOME/.dotfiles"
 alias e='code .'
 alias ff="find . -iname"
 alias h='history'
+alias h1='history 10'
+alias h2='history 20'
 alias hosts='sudo $EDITOR /etc/hosts'
 alias hs='history | grep'
 # Show active network interfaces
