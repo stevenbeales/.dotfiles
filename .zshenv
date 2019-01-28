@@ -7,11 +7,6 @@ export EDITOR="code -w"
 
 export GITHUB_USER="stevenbeales"
 
-# keep more history
-export HISTCONTROL=erasedups
-export HISTSIZE=1000
-export HISTFILESIZE=1000
-
 export HOMEBREW_NO_ANALYTICS=1
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
@@ -66,6 +61,9 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
+# keep more history
+HISTSIZE=1000
+SAVEHIST=$HISTSIZE
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.

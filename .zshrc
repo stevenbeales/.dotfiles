@@ -14,14 +14,7 @@ plugins=(
   colored-man-pages iterm2 zsh-autosuggestions django postgres
 )
 
-# makes color constants available
-autoload -U colors
-colors
-
 source $ZSH/oh-my-zsh.sh
-
-# ensure unique paths within PATH
-typeset -U path
 
  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 

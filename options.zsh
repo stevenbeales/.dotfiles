@@ -58,6 +58,9 @@ setopt hash_list_all
 # not just at the end
 setopt completeinword
 
+# Show command with history expansion to user before running it
+setopt hist_verify
+
 # Don't send SIGHUP to background processes when the shell exits.
 setopt nohup
 
@@ -77,3 +80,5 @@ unsetopt bgnice autoparamslash
 
 setopt complete_aliases
 
+# Do not overwrite files when redirecting using ">". Note that you can still override this with ">|"
+set -o noclobber

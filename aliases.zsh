@@ -30,6 +30,12 @@ alias mtime="stat -c '%Y - %y - %n'"
 alias owner="stat -c '%U - %u - %n'"
 alias group="stat -c '%G - %g - %n'"
 
+# brew shortcuts
+alias bstart="brew services start"
+alias bstop="brew services stop"
+alias bslist="brew services list"
+alias bup="brew upgrade && brew cleanup"
+
 # shortcuts
 # Airport CLI alias
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
@@ -100,7 +106,11 @@ alias q='exit'
 alias reload="exec ${SHELL} -l"
 alias size="du -h"
 alias t='time'
+
 alias tlf="tail -f"
+# A less noisy tree list
+alias tr="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
+
 # Get week number
 alias week='date +%V'
 alias x="exit"
