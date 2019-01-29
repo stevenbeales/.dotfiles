@@ -22,8 +22,8 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-export LSCOLORS=Gxfxcxdxbxegedabagacad
-export LS_COLORS=Gxfxcxdxbxegedabagacad
+export LSCOLORS='Exfxcxdxbxegedabagacad'
+export LS_COLORS='di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'  
 
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page"
 
@@ -35,9 +35,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export PAGER=${PAGER:-less}
 
-# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
-export PYTHONIOENCODING='UTF-8';
-
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -47,14 +44,14 @@ export TMPDIR="$TMP"
 export TMPPREFIX="${TMPDIR}/zsh"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=30
+export UPDATE_ZSH_DAYS=90
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 export ZSH_HISTORY_PATH=$HOME/.zsh_history
 
-
+# CD searches this path if directory not in current tree
 CDPATH=$HOME/code
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -76,27 +73,15 @@ SAVEHIST=$HISTSIZE
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="ys"
-
-RED="\[\033[0;31m\]"
-PINK="\[\033[1;31m\]"
-YELLOW="\[\033[1;33m\]"
-GREEN="\[\033[0;32m\]"
-LT_GREEN="\[\033[1;32m\]"
-BLUE="\[\033[0;34m\]"
-WHITE="\[\033[1;37m\]"
-PURPLE="\[\033[1;35m\]"
-CYAN="\[\033[1;36m\]"
-BROWN="\[\033[0;33m\]"
-COLOR_NONE="\[\033[0m\]"
-
 # report about cpu-/system-/user-time of command if running longer than
 # 5 seconds
 REPORTTIME=5
 
 # watch for everyone but me and root
 watch=(notme root)
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="ys"

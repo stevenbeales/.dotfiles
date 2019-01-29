@@ -1,34 +1,10 @@
 
-# UNIX commands changed to better or safer versions
-alias ag='ag -f --hidden'
-alias bc='bc -l'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias mount='mount |column -t'
-# mv, rm, cp
-alias mv='mv -v'
-alias rm='rm -i -v'
-alias cp='cp -v'
 
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-alias top="htop"
-#resume downloads
-alias wget='wget -c'
-
-alias mkdir='nocorrect noglob mkdir'
-alias mv="nocorrect mv"
-alias cp="nocorrect cp"
-alias man="nocorrect man"
-
-alias cask='brew cask'
-alias where='which'
-
-# /quick-stat/
-alias atime="stat -c '%X - %x - %n'"
-alias mtime="stat -c '%Y - %y - %n'"
-alias owner="stat -c '%U - %u - %n'"
-alias group="stat -c '%G - %g - %n'"
+# Global aliases -- These do not have to be
+# at the beginning of the command line.
+alias -g M='|more'
+alias -g H='|head'
+alias -g T='|tail'
 
 # shortcuts
 # Airport CLI alias
@@ -47,9 +23,12 @@ alias d='dirs -v | head -10'
 alias dotf="cd $HOME/.dotfiles"
 alias e='code .'
 alias ff="find . -iname"
+alias generate_secret="openssl rand -base64 32"
 alias h='history'
 alias h1='history 10'
 alias h2='history 20'
+alias h3='history 30'
+alias headerc='curl -I --compress'
 alias hosts='sudo $EDITOR /etc/hosts'
 alias hs='history | grep'
 # Show active network interfaces
@@ -79,13 +58,10 @@ alias lsnew="command ls -rtlh *(D.om[1,10])"
 alias lsold="command ls -rtlh *(D.Om[1,10])"
 #a2# Display the ten smallest files
 alias lssmall="command ls -Srl *(.oL[1,10])"
-
 #a2# Display the ten newest directories and ten newest .directories
 alias lsnewdir="command ls -rthdl *(/om[1,10]) .*(D/om[1,10])"
 #a2# Display the ten oldest directories and ten oldest .directories
 alias lsolddir="command ls -rthdl *(/Om[1,10]) .*(D/Om[1,10])"
-
-alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo '
 alias mvi="mv -i"
 alias myip='curl http://ipecho.net/plain'
@@ -95,18 +71,26 @@ alias ohmyzsh="code ~/.oh-my-zsh"
 alias p='cat'
 alias path='echo -e ${PATH//:/\\n}'
 alias pd='pwd'
+
+## get top process eating cpu ##
+alias pscpu='ps aux | sort -nr -k 3'
+alias pscpu10='ps aux | sort -nr -k 3 | head -10'
+# get top process eating memory
+alias psmem='ps aux | sort -nr -k 4'
+alias psmem10='ps aux | sort -nr -k 4 | head -10'
+ 
 alias q='exit'
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
+alias sha1='openssl sha1'
 alias size="du -h"
 alias t='time'
-
 alias tlf="tail -f"
 # A less noisy tree list
 alias tr="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
-
 # Get week number
 alias week='date +%V'
+alias where='which'
 alias x="exit"
 alias zshconfig="code ~/.zshrc"
 
@@ -120,8 +104,6 @@ alias loadsecrets='source ~/.secrets.sh'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
-alias generate_secret="openssl rand -base64 32"
-
 # Editor shortcuts
 alias vi=vim
 alias svi='sudo vi'
@@ -131,16 +113,10 @@ alias edit='code'
 # Ctags.
 alias gentags='ctags -R .'
 
-# Let there be color in grep!
-alias grep='grep --color=auto --exclude=tags --exclude-dir=.git --exclude-dir=venv'
 alias convertCRLF='find ./ -type f -print0 | xargs -0 dos2unix --'
 
 alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
 alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'
-
-# Toggle hidden files in Finder
-alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
-alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
 
 alias /quit=exit
 
@@ -150,8 +126,9 @@ alias openports="lsof -n -P -i4TCP|grep LISTEN"
 alias :q="echo 'you are not in Vi anymore' ; echo ''"
 alias :w="echo 'you are not in Vi anymore' ; echo ''"
 
-# Global aliases -- These do not have to be
-# at the beginning of the command line.
-alias -g M='|more'
-alias -g H='|head'
-alias -g T='|tail'
+# /quick-stat/
+alias atime="stat -c '%X - %x - %n'"
+alias mtime="stat -c '%Y - %y - %n'"
+alias owner="stat -c '%U - %u - %n'"
+alias group="stat -c '%G - %g - %n'"
+

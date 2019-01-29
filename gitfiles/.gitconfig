@@ -22,79 +22,136 @@
   remote = yellow
  
 [alias]
-  co = checkout
-  st = status -sb
-  br = branch
-  ci = commit
-  fo = fetch origin
-  d = !git --no-pager diff
-  # Pull in remote changes for the current repository and all its submodules
-	p = !"git pull; git submodule foreach git pull origin master"
-  dt  = difftool
-  stat = !git --no-pager diff --stat
-
-  # Clean merged branches
-  sweep = !git branch --merged master | grep -v 'master$' | xargs git branch -d && git remote prune origin
-
-# View abbreviated SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
-
-  # http://www.jukie.net/bart/blog/pimping-out-git-log
-  lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
-
-  # Serve local repo. http://coderwall.com/p/eybtga
-  # Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
-  serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
-
-  m = checkout master
-
-  # Removes a file from the index
-  unstage = reset HEAD --
-  
-  # Show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
-
+	a=add
+	# add all
+  aa = add --all
 	# List aliases
 	aliases = config --get-regexp alias
-
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
-
+  # add by patch - looks at each change, and asks if we want to put it in the repo.
+  ap = add --patch
+	# add just the files that are updated.
+  au = add --update
+	b=branch
+  # branch - edit the description
+  be = branch --edit-description
+  # branch and only list branches whose tips are reachable from the specified commit (HEAD if not specified).
+  bm = branch --merged
+	 # branch and only list branches whose tips are not reachable from the specified commit (HEAD if not specified).
+  bnm = branch --no-merged
+	br = branch
+	branches = branch -a
+	c=commit
+  # commit - amend the tip of the current branch rather than creating a new commit.
+  ca = commit --amend
+  # commit - amend the tip of the current branch, and edit the message.
+  cam = commit --amend --message
+  # commit - amend the tip of the current branch, and do not edit the message.
+  cane = commit --amend --no-edit
+	ci = commit
+  cleanest = clean -ffdx
+	# commit with a message
+  cm = commit --message
+  co = checkout
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+	# cherry-pick - apply the changes introduced by some existing commits; useful for moving small chunks of code between branches.
+  cp = cherry-pick
+  # cherry-pick without making a commit, and when when recording the commit, append a line that says "(cherry picked from commit ...)"
+  cp-nx = cherry-pick --no-commit -x
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-
-	# Amend the currently staged files to the latest commit
-	amend = commit --amend --reuse-message=HEAD
-
-	# Credit an author on the latest commit
-	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-
-	# Interactive rebase with the given number of latest commits
-	reb = "!r() { git rebase -i HEAD~$1; }; r"
-
-	# Remove the old tag with this name and tag the latest commit with it.
-	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
-
-	# Find branches containing commit
-	fb = "!f() { git branch -a --contains $1; }; f"
-
-	# Find tags containing commit
-	ft = "!f() { git describe --always --contains $1; }; f"
-
-	# Find commits by source code
-	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-
-	# Find commits by commit message
-	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-
+	d = !git --no-pager diff
+	# diff - show changes not yet staged
+  dc = diff --cached
+  # diff deep - show changes with our preferred options. Also aliased as `diff-deep`.
+  dd = diff --check --dirstat --find-copies --find-renames --histogram --color
+  # diff - show changes about to be commited
 	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-
-	# List contributors with number of commits
-	contributors = shortlog --summary --numbered
+  ds = diff --staged
+	dt  = difftool
+  # diff - show changes but by word, not line
+  dw = diff --word-diff
+	f=fetch
+	# Find branches containing commit
+	fb = "!f() { git branch -a --contains $1; }; f"
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	fo = fetch origin
+	# Find tags containing commit
+	ft = "!f() { git describe --always --contains $1; }; f"
+	g=grep
+	# grep group - search with our preferred options. Also aliased as `grep-group`.
+  gg = grep --break --heading --line-number --color
+	# grep - show line number
+  gl = grep --line-number
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  # log with first parent, useful for team branch that only accepts pull requests
+  lfp = log --first-parent
+	# http://www.jukie.net/bart/blog/pimping-out-git-log
+  lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+  # log like - we like this summarization our key performance indicators. Also aliased as `log-like`.
+  ll = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
+  # log with one line per item.
+	lo = log --oneline
+  # log with patch generation.
+  lp = log --patch
+	# ls-files - show information about files in the index and the working tree; like Unix "ls" command.
+  ls = ls-files
+  # ls-ignored -  list files that git has ignored.
+  ls-ignored = ls-files --others --i --exclude-standard
+	# log with items appearing in topological order, i.e. descendant commits are shown before their parents.
+	lt = log --topo-order
+	m = checkout master
+  # merge but without autocommit, and with a commit even if the merge resolved as a fast-forward.
+  me = merge --no-commit --no-ff	
+	o=checkout
+  # Pull in remote changes for the current repository and all its submodules
+	p = !"git pull; git submodule foreach git pull origin master"
+	# pull if a merge can be resolved as a fast-forward, otherwise fail.
+  pf = pull --ff-only
+	pr = pull --rebase
+	pu=pull
+	r=remote
+	 # rebase - forward-port local commits to the updated upstream head.
+  rb = rebase
+	 # rebase - continue the rebasing process after resolving a conflict manually and updating the index with the resolution.
+  rbc = rebase --continue
+  rbi = rebase --interactive @{upstream}
+  # rebase - restart the rebasing process by skipping the current patch.
+  rbs = rebase --skip
+	# Interactive rebase with the given number of latest commits
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+	remotes = remote -v
+	# Remove the old tag with this name and tag the latest commit with it.
+	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+  rl = reflog
+	# remote - manage set of tracked repositories [same as "r"].
+  rr = remote
+  # remote prune - deletes all stale remote-tracking branches under <name>.
+  rrp = remote prune
+  # remote show - gives some information about the remote <name>.
+  rrs = remote show
+  # remote update - fetch updates for a named set of remotes in the repository as defined by remotes.
+  rru = remote update
+	# Serve local repo. http://coderwall.com/p/eybtga
+  # Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
+	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	s=status
+  st = status -sb
+  stat = !git --no-pager diff --stat
+  # Clean merged branches
+  sweep = !git branch --merged master | grep -v 'master$' | xargs git branch -d && git remote prune origin
+  # Show verbose output about tags, branches or remotes
+	tags = tag -l
+  # Removes a file from the index
+  unstage = reset HEAD --
   
 [help]
   autocorrect = 1

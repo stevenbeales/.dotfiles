@@ -173,19 +173,6 @@ getlinks () {
 	perl -ne 'while ( m/"((www|ftp|http):\/\/.*?)"/gic ) { print $1, "\n"; }' $* 
 }
 
-gif2png() {
-	if [[ $# = 0 ]]
-	then
-		echo "Usage: $0 foo.gif"
-		echo "Purpose: change a GIF file to a PNG file"
-	else
-		output=`basename $1 .gif`.png
-		convert  $1 $output
-		touch -r $1 $output
-		ls -l $1 $output
-	fi
-}
-
 # Compare original and gzipped file size
 gz() {
 	local origsize=$(wc -c < "$1");

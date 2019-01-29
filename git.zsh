@@ -35,7 +35,6 @@ git-add-commit-push() {
   git add -A && git commit -m "$1" && git push
 }
 
-
 git_dirty() {
     if [ "${git_worktree_is_bare}" = 'false' ] && [ -n "$(git status --untracked-files='no' --porcelain)" ]; then
         git_dirty='%F{green}*'

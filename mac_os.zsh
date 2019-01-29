@@ -1,4 +1,9 @@
 
+alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+# Toggle hidden files in Finder
+alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
+alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
+
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
@@ -13,7 +18,6 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)

@@ -1,3 +1,4 @@
+# fix typoes
 
 alias dior='dir'
 alias dire='dir'

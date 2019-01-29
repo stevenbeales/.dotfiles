@@ -9,6 +9,7 @@ orphans () {
 }
 
 # brew shortcuts
+alias cask='brew cask'
 alias bstart="brew services start"
 alias bstop="brew services stop"
 alias bslist="brew services list"
