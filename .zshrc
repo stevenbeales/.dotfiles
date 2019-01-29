@@ -30,4 +30,4 @@ export PATH="$HOME/.rvm/bin:$PATH:"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-attach_to_tmux
+if [ ! -d "${TMP}" ]; then mkdir "${TMP}"; fi

@@ -2,8 +2,6 @@
 bindkey -v
 bindkey ^F vi-cmd-mode
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
@@ -81,3 +79,6 @@ bindkey -s '\M-/' \\\\
 bindkey -s '\M-=' \|
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line

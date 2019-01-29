@@ -30,12 +30,6 @@ alias mtime="stat -c '%Y - %y - %n'"
 alias owner="stat -c '%U - %u - %n'"
 alias group="stat -c '%G - %g - %n'"
 
-# brew shortcuts
-alias bstart="brew services start"
-alias bstop="brew services stop"
-alias bslist="brew services list"
-alias bup="brew upgrade && brew cleanup"
-
 # shortcuts
 # Airport CLI alias
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
@@ -116,28 +110,6 @@ alias week='date +%V'
 alias x="exit"
 alias zshconfig="code ~/.zshrc"
 
-# navigation shortcuts
-alias home='cd ~'
-alias dl="cd ~/Downloads"
-alias dtop='cd ~/Desktop'
-alias dbox='cd ~/Dropbox'
-alias gdrive='cd ~/Google\ Drive'
-alias root='cd /'
-
-alias ..='cd ..'
-alias ...='cd ..; cd ..'
-alias ....='cd ..; cd ..; cd ..'
-alias pv='cd -'
-
-alias 1='cd -'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9' 
 
 # Shortcuts to vimrc and bashrc
 alias vimrc='code ~/.dotfiles/.vimrc'
@@ -171,18 +143,6 @@ alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killal
 alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
 
 alias /quit=exit
-
-# Windows/DOS still in your muscle memory
-alias xcopy='cp'
-alias rd='rmdir'
-alias ren='mv'
-alias deltree='rm -r'
-alias dir="command ls -lSrah"
-alias del='rm'
-alias edit='code'
-alias md='mkdir'
-alias more='less'
-alias move='mv'
 
 # Display processes listening to TCP/IP ports
 alias openports="lsof -n -P -i4TCP|grep LISTEN"

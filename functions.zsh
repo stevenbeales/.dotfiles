@@ -20,7 +20,6 @@ bk () {
     emulate -L zsh
     local current_date=$(date -u "+%Y%m%dT%H%M%SZ")
     local clean keep move verbose result all to_bk
-    setopt extended_glob
     keep=1
     while getopts ":hacmrv" opt; do
         case $opt in
@@ -99,13 +98,12 @@ cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
-
 #f5# List files which have been changed within the last {\it n} days, {\it n} defaults to 1
 changed () {
     emulate -L zsh
     print -l -- *(c-${1:-1})
 }
-
+# make files executable
 cx () { 
 	chmod +x $* 
 }
@@ -246,6 +244,15 @@ killProcessByName() {
   ps axf | grep $1 | grep -v grep | awk '{print "kill -9 " $1}' | sh
 }
 
+man() {
+    if command -v vimmanpager >/dev/null 2>&1; then
+        PAGER="vimmanpager" command man "$@"
+    else
+        command man "$@"
+    fi
+}
+
+
 #f5# List files which have been modified within the last {\it n} days, {\it n} defaults to 1
 modified () {
     emulate -L zsh
@@ -255,6 +262,14 @@ modified () {
 # direct it all to /dev/null
 nullify() {
   "$@" >/dev/null 2>&1
+}
+
+over_ssh() {
+    if [ -n "${SSH_CLIENT}" ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 ## History wrapper
@@ -273,33 +288,6 @@ omz_history () {
     # unless a number is provided, show all history events (starting from 1)
     [[ ${@[-1]} = *[0-9]* ]] && builtin fc -l "$@" || builtin fc -l "$@" 1
   fi
-}
-
-# list orphan/unused brew packages so that they can be removed
-orphans () {
-  brew list -1 | while read cask;
-  do
-    echo -ne "\x1B[1;34m $cask \x1B[0m";
-    brew uses $cask --installed | awk '{printf(" %s ", $0)}';
-    echo "";
-  done
-}
-
-plocale() {
-	print LC_ALL=$LC_ALL
-	print LANG=$LANG
-	print LC_CTYPE=$LC_CTYPE
-	print LC_NUMERIC=$LC_NUMERIC
-	print LC_TIME=$LC_TIME
-	print LC_COLLATE=$LC_COLLATE
-	print LC_MONETARY=$LC_MONETARY
-	print LC_MESSAGES=$LC_MESSAGES
-	print LC_PAPER=$LC_PAPER
-	print LC_NAME=$LC_NAME
-	print LC_ADDRESS=$LC_ADDRESS
-	print LC_TELEPHONE=$LC_TELEPHONE
-	print LC_MEASUREMENT=$LC_MEASUREMENT
-	print LC_IDENTIFICATION=$LC_IDENTIFICATION
 }
 
 prepend() { 

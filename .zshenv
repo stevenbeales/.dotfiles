@@ -41,6 +41,11 @@ export PYTHONIOENCODING='UTF-8';
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+export TMP="$HOME/tmp"
+export TEMP="$TMP"
+export TMPDIR="$TMP"
+export TMPPREFIX="${TMPDIR}/zsh"
+
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=30
 
@@ -54,6 +59,8 @@ CDPATH=$HOME/code
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
+
+DIRSTACKSIZE=16
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"

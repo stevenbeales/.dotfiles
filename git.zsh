@@ -25,9 +25,24 @@ if [ $? -eq 0 ]; then
 	}
 fi;
 
+gpb() { git push -u origin "$(git rev-parse --abbrev-ref HEAD)" }
+
 gig() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 giga() { gig $@ >> .gitignore ;}
+
+git-add-commit-push() {
+  git add -A && git commit -m "$1" && git push
+}
+
+
+git_dirty() {
+    if [ "${git_worktree_is_bare}" = 'false' ] && [ -n "$(git status --untracked-files='no' --porcelain)" ]; then
+        git_dirty='%F{green}*'
+    else
+        unset git_dirty
+    fi
+}
 
 git-forget() { 
   if [[ "$1" == "-f" ]]; then
@@ -40,16 +55,9 @@ git-forget() {
   git filter-branch $FORCE_ARG --index-filter "$FILTER_EXP" --prune-empty
 }
 
-git-add-commit-push() {
-  git add -A && git commit -m "$1" && git push
-}
-
 gitize() { 
 	git init && git add . && git commit -a -m"initial commit" && git gc
 } 
-
-gpb() { git push -u origin "$(git rev-parse --abbrev-ref HEAD)" }
-
 # git commit browser. needs fzf
 log() {
   git log --graph --color=always \
