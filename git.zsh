@@ -1,4 +1,4 @@
-# git shortcuts
+# Git Shortcuts
 alias g='git'
 alias st='git status'
 alias com='git commit -m'

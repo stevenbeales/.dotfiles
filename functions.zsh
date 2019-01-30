@@ -4,84 +4,6 @@ accessed () {
     print -l -- *(a-${1:-1})
 }
 
-any () {
-    emulate -L zsh
-    unsetopt KSH_ARRAYS
-    if [[ -z "$1" ]] ; then
-        echo "any - grep for process(es) by keyword" >&2
-        echo "Usage: any <keyword>" >&2 ; return 1
-    else
-        ps xauwww | grep -i "${grep_options[@]}" "[${1[1]}]${1[2,-1]}"
-    fi
-}
-
-#f5# Backup \kbd{file_or_folder {\rm to} file_or_folder\_timestamp}
-bk () {
-    emulate -L zsh
-    local current_date=$(date -u "+%Y%m%dT%H%M%SZ")
-    local clean keep move verbose result all to_bk
-    keep=1
-    while getopts ":hacmrv" opt; do
-        case $opt in
-            a) (( all++ ));;
-            c) unset move clean && (( ++keep ));;
-            m) unset keep clean && (( ++move ));;
-            r) unset move keep && (( ++clean ));;
-            v) verbose="-v";;
-            h) <<__EOF0__
-bk [-hcmv] FILE [FILE ...]
-bk -r [-av] [FILE [FILE ...]]
-Backup a file or folder in place and append the timestamp
-Remove backups of a file or folder, or all backups in the current directory
-
-Usage:
--h    Display this help text
--c    Keep the file/folder as is, create a copy backup using cp(1) (default)
--m    Move the file/folder, using mv(1)
--r    Remove backups of the specified file or directory, using rm(1). If none
-      is provided, remove all backups in the current directory.
--a    Remove all (even hidden) backups.
--v    Verbose
-
-The -c, -r and -m options are mutually exclusive. If specified at the same time,
-the last one is used.
-
-The return code is the sum of all cp/mv/rm return codes.
-__EOF0__
-return 0;;
-            \?) bk -h >&2; return 1;;
-        esac
-    done
-    shift "$((OPTIND-1))"
-    if (( keep > 0 )); then
-					for to_bk in "$@"; do
-							cp $verbose -pR "${to_bk%/}" "${to_bk%/}_$current_date"
-							(( result += $? ))
-					done
-		elif (( move > 0 )); then
-        while (( $# > 0 )); do
-            mv $verbose "${1%/}" "${1%/}_$current_date"
-            (( result += $? ))
-            shift
-        done
-    elif (( clean > 0 )); then
-        if (( $# > 0 )); then
-            for to_bk in "$@"; do
-                rm $verbose -rf "${to_bk%/}"_[0-9](#c8)T([0-1][0-9]|2[0-3])([0-5][0-9])(#c2)Z
-                (( result += $? ))
-            done
-        else
-            if (( all > 0 )); then
-                rm $verbose -rf *_[0-9](#c8)T([0-1][0-9]|2[0-3])([0-5][0-9])(#c2)Z(D)
-            else
-                rm $verbose -rf *_[0-9](#c8)T([0-1][0-9]|2[0-3])([0-5][0-9])(#c2)Z
-            fi
-            (( result += $? ))
-        fi
-    fi
-    return $result
-}
-
 #f5# Create temporary directory and \kbd{cd} to it
 cdt () {
     builtin cd "$(mktemp -d)"
@@ -98,6 +20,7 @@ changed () {
     emulate -L zsh
     print -l -- *(c-${1:-1})
 }
+
 # make files executable
 cx () { 
 	chmod +x $* 
@@ -105,18 +28,6 @@ cx () {
 
 dict() {
   grep "$@" /usr/share/dict/words
-}
-
-dirsize() {
-	if [ -z $1 ]; then
-		dir="."
-	else
-		dir=$1
-	fi
-	find $dir -type d -maxdepth 1 -mindepth 1 -exec du -sh '{}' \; 2>/dev/null \
-	| perl -pe "s/\t.*\/(.*)$/\t$(echo '\033[01;32m')\1$(echo '\033[0m')/gi" 
-	echo
-	echo "Total: " $(du -sh $dir 2>/dev/null | awk '{print $1}')
 }
 
 extract () {
@@ -148,20 +59,6 @@ fixperms(){
 
 funlist() {
   print -l ${(ok)functions}
-}
-
-# Determine size of a file or total size of a directory
-fs() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
-	else
-		local arg=-sh;
-	fi
-	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
-	else
-		du $arg .[^.]* ./*;
-	fi;
 }
 
 getlinks () { 
@@ -218,23 +115,6 @@ H-Glob () {
 }
 alias help-zshglob=H-Glob
 
-histgrep () { 
-	fc -fl -m "*(#i)$1*" 1 | grep -i --color $1 
-}
-
-killProcessByName() {
-  ps axf | grep $1 | grep -v grep | awk '{print "kill -9 " $1}' | sh
-}
-
-man() {
-    if command -v vimmanpager >/dev/null 2>&1; then
-        PAGER="vimmanpager" command man "$@"
-    else
-        command man "$@"
-    fi
-}
-
-
 #f5# List files which have been modified within the last {\it n} days, {\it n} defaults to 1
 modified () {
     emulate -L zsh
@@ -254,24 +134,6 @@ over_ssh() {
     fi
 }
 
-## History wrapper
-omz_history () {
-  local clear list
-  zparseopts -E c=clear l=list
-
-  if [[ -n "$clear" ]]; then
-    # if -c provided, clobber the history file
-    echo -n >| "$HISTFILE"
-    echo >&2 History file deleted. Reload the session to see its effects.
-  elif [[ -n "$list" ]]; then
-    # if -l provided, run as if calling `fc' directly
-    builtin fc "$@"
-  else
-    # unless a number is provided, show all history events (starting from 1)
-    [[ ${@[-1]} = *[0-9]* ]] && builtin fc -l "$@" || builtin fc -l "$@" 1
-  fi
-}
-
 prepend() { 
 	[ -d "$2" ] && eval $1=\"$2\$\{$1:+':'\$$1\}\" && export $1 ;
 }
@@ -279,15 +141,6 @@ prepend() {
 # zsh profiling
 profile () {
     ZSH_PROFILE_RC=1 zsh "$@"
-}
-
-psgrep() {
-	if [ ! -z $1 ] ; then
-			echo "Grepping for processes matching $1..."
-			ps aux | grep $1 | grep -v grep
-	else
-			echo "!! Need name to grep for"
-	fi
 }
 
 r() { grep "$1" ${@:2} -R . }
