@@ -1,3 +1,6 @@
+
+# Tmux Functions
+
 _is_tmux_not_running() {
   [[ -z "$TMUX" ]]
 }

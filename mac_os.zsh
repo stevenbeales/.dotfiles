@@ -175,6 +175,8 @@ if [[ "$LC_TERM_PROGRAM" == "iTerm.app" ]] ; then
 
 fi
 
+# Functions
+
 isdarwin () {
     [[ $GRML_OSTYPE == "Darwin" ]]
 }

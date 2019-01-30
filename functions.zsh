@@ -82,11 +82,6 @@ return 0;;
     return $result
 }
 
-# cd into whatever is the forefront Finder window.
-cdf() {  # short for cdfinder
-  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
-}
-
 #f5# Create temporary directory and \kbd{cd} to it
 cdt () {
     builtin cd "$(mktemp -d)"
@@ -321,6 +316,7 @@ search() {
 	grep -Ri "$1" --line-number --before-context=3 --after-context=3 --color=always --include="$2" --exclude=".*" "$search_path"/*
 }
 
+# CSh compatibility
 setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }  # csh compatibility
 
 showoptions() {                                                                                                                                                                                                     
@@ -374,18 +370,6 @@ targz() {
 	);
 
 	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
-}
-
-up() {
-  if [[ "$#" < 1 ]] ; then
-      cd ..
-  else
-      CDSTR=""
-      for i in {1..$1} ; do
-          CDSTR="../$CDSTR"
-      done
-      cd $CDSTR
-  fi
 }
 
 # Check if we can read given files and source those we can.

@@ -7,7 +7,7 @@ remove-pyc-files() {
   find . -name "*.pyc" -exec rm -rf {} \;
 }
 
-# python shortcuts
+# Python shortcuts
 alias pip="python3 -m pip"
 alias python='python3'
 alias pypath='python -c "import sys; print sys.path" | tr "," "\n" | grep -v "egg"'
@@ -31,3 +31,9 @@ alias pprint='python -c "import pprint, sys, ast; pprint.pprint(ast.literal_eval
 # pretty print clipboard
 alias pprint_clipboard='pbpaste | pprint'
 alias prp="pipenv run python"
+
+# Find python file
+alias pyfind='find . -name "*.py"'
+
+# Grep among .py files
+alias pygrep='grep --include="*.py"'

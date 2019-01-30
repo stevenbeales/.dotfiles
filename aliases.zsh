@@ -6,7 +6,7 @@ alias -g M='|more'
 alias -g H='|head'
 alias -g T='|tail'
 
-# shortcuts
+# Shortcuts
 # Airport CLI alias
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 alias c='clear'
@@ -14,6 +14,7 @@ alias chm='chmod'
 alias chrome='open -a "Google Chrome"'
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+alias convertCRLF='find ./ -type f -print0 | xargs -0 dos2unix --'
 alias cpi="cp -i"
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
 alias cpwd='pwd | pbcopy'
@@ -24,6 +25,8 @@ alias dotf="cd $HOME/.dotfiles"
 alias e='code .'
 alias ff="find . -iname"
 alias generate_secret="openssl rand -base64 32"
+# Ctags.
+alias gentags='ctags -R .'
 alias h='history'
 alias h1='history 10'
 alias h2='history 20'
@@ -94,7 +97,6 @@ alias where='which'
 alias x="exit"
 alias zshconfig="code ~/.zshrc"
 
-
 # Shortcuts to vimrc and bashrc
 alias vimrc='code ~/.dotfiles/.vimrc'
 alias zshrc='code ~/.dotfiles/.zshrc'
@@ -109,11 +111,6 @@ alias vi=vim
 alias svi='sudo vi'
 alias vis='vim "+set si"'
 alias edit='code'
-
-# Ctags.
-alias gentags='ctags -R .'
-
-alias convertCRLF='find ./ -type f -print0 | xargs -0 dos2unix --'
 
 alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
 alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'

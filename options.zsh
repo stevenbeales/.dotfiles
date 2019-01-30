@@ -2,31 +2,31 @@
 # Don't overwrite, append history
 setopt APPEND_HISTORY
 
-# automatically enter directories without cd
+# Automatically enter directories without cd
 setopt AUTO_CD
 
 # Make cd push the old directory onto the directory stack.
 setopt AUTO_PUSHD
 
-# allow cding to variables that hold directory names
+# Allow cding to variables that hold directory names
 setopt CDABLE_VARS
 
-# prevents aliases on the command line from being internally substituted before completion is attempted
+# Prevents aliases on the command line from being internally substituted before completion is attempted
 setopt COMPLETE_ALIASES
 
-# autocomplete not just at the end
+# Autocomplete not just at the end
 setopt COMPLETE_IN_WORD
 
-# cause the oldest history event that has a duplicate to be lost 
+# Cause the oldest history event that has a duplicate to be lost 
 setopt HIST_EXPIRE_DUPS_FIRST
 
-#Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation
+# Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation
 setopt EXTENDED_GLOB
 
 # Save the time and how long a command ran
 setopt EXTENDED_HISTORY
 
-# whenever a command completion is attempted, make sure the entire command path
+# Whenever a command completion is attempted, make sure the entire command path
 # is hashed first.
 setopt HASH_LIST_ALL
 
@@ -94,13 +94,13 @@ setopt SHORT_LOOPS
 setopt SUN_KEYBOARD_HACK
 
 
-# don't error out when unset parameters are used
+# Don't error out when unset parameters are used
 setopt UNSET
 
-# automatically remove duplicates from these arrays
+# Automatically remove duplicates from these arrays
 typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
 
-# don't append / to directories
+# Don't append / to directories
 unsetopt autoparamslash
 
 # Discard beeps

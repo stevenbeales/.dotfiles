@@ -1,4 +1,4 @@
-# navigation shortcuts
+# Navigation Shortcuts
 alias home='cd ~'
 alias dl="cd ~/Downloads"
 alias dtop='cd ~/Desktop'
@@ -20,3 +20,17 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9' 
+
+# Functions
+
+up() {
+  if [[ "$#" < 1 ]] ; then
+      cd ..
+  else
+      CDSTR=""
+      for i in {1..$1} ; do
+          CDSTR="../$CDSTR"
+      done
+      cd $CDSTR
+  fi
+}
