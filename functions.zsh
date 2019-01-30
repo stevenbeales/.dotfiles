@@ -57,10 +57,6 @@ fixperms(){
     find . \( -name "*.sh" -or -type d \) -exec chmod 755 {} \; && find . -type f ! -name "*.sh" -exec chmod 644 {} \;
 }
 
-funlist() {
-  print -l ${(ok)functions}
-}
-
 getlinks () { 
 	perl -ne 'while ( m/"((www|ftp|http):\/\/.*?)"/gic ) { print $1, "\n"; }' $* 
 }
@@ -75,7 +71,7 @@ gz() {
 }
 
 #f1# Provides useful information on globbing
-H-Glob () {
+help-zshglob () {
 	echo -e "
 	/      directories
 	.      plain files
@@ -113,7 +109,6 @@ H-Glob () {
   print **/*(g:users:)  # Recursively match all files that are owned by group 'users'
   echo /proc/*/cwd(:h:t:s/self//) # Analogous to >ps ax | awk '{print $1}'<"
 }
-alias help-zshglob=H-Glob
 
 #f5# List files which have been modified within the last {\it n} days, {\it n} defaults to 1
 modified () {

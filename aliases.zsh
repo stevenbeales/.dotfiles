@@ -26,7 +26,6 @@ alias mvi="mv -i"
 alias myip='curl http://ipecho.net/plain'
 alias null='/dev/null'
 alias o=open
-alias ohmyzsh="code ~/.oh-my-zsh"
 # Display processes listening to TCP/IP ports
 alias openports="lsof -n -P -i4TCP|grep LISTEN"
 alias p='cat'
@@ -47,6 +46,7 @@ alias x="exit"
 
 # Shortcuts to vimrc and zshrc
 alias loadzsh='source ~/.dotfiles/.zshrc'
+alias ohmyzsh="code ~/.oh-my-zsh"
 alias vimrc='code ~/.dotfiles/.vimrc'
 alias zshconfig="code ~/.zshrc"
 alias zshrc='code ~/.dotfiles/.zshrc'

@@ -9,9 +9,8 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  bundler git rails 
-  osx vscode zsh_reload zsh-syntax-hightlighting
-  colored-man-pages iterm2 zsh-autosuggestions django postgres
+  bundler git rails osx zsh_reload zsh-syntax-hightlighting
+  colored-man-pages iterm2 zsh-autosuggestions django 
 )
 
 source $ZSH/oh-my-zsh.sh
