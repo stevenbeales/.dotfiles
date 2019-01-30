@@ -1,0 +1,15 @@
+*
+!agents/*
+!assets/*
+!config/*
+!dist/*
+!handlers/*
+!helpers/*
+!lib/*
+!models/*
+!presenters/*
+!routes/*
+!tools/*
+!views/*
+!*.js
+!*.json
