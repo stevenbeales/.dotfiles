@@ -1,16 +1,18 @@
 
 # Shortcuts
 alias c='clear'
+alias ccat='highlight -O ansi'
 alias chm='chmod'
 alias convertCRLF='find ./ -type f -print0 | xargs -0 dos2unix --'
 alias cpi="cp -i"
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
-alias cpwd='pwd | pbcopy'
 alias cs='clear;ls'
 alias ct="ctags -R --exclude=.git --exclude=node_modules"
 alias d='dirs -v | head -10'
 alias e='code .'
 alias ff="find . -iname"
+# File size
+alias fs="stat -f \"%z bytes\""
 alias generate_secret="openssl rand -base64 32"
 # Ctags.
 alias gentags='ctags -R .'
@@ -22,6 +24,10 @@ alias j='autojump'
 alias k='kill'
 alias loadsecrets='source ~/.secrets.sh'
 alias localip="ipconfig getifaddr en0"
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
 alias mvi="mv -i"
 alias myip='curl http://ipecho.net/plain'
 alias null='/dev/null'
@@ -37,12 +43,15 @@ alias sha1='openssl sha1'
 alias size="du -h"
 alias t='time'
 alias tlf="tail -f"
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 # A less noisy tree list
 alias tr="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
 # Get week number
 alias week='date +%V'
 alias where='which'
 alias x="exit"
+# clean terminal history
+alias yolo="history -c && clear"
 
 # Shortcuts to vimrc and zshrc
 alias loadzsh='source ~/.dotfiles/.zshrc'
@@ -62,6 +71,10 @@ alias edit='code'
 
 alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
 alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
 
 alias /quit=exit
 

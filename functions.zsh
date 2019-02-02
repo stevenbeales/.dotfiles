@@ -167,6 +167,22 @@ search() {
 # CSh compatibility
 setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }  # csh compatibility
 
+# setup GPG and SSH
+setup_agents() {
+  [[ $UID -eq 0 ]] && return
+
+  if (( $+commands[keychain] )); then
+	local -a ssh_keys gpg_keys
+	for i in ~/.ssh/**/*pub; do test -f "$i(.N:r)" && ssh_keys+=("$i(.N:r)"); done
+	gpg_keys=$(gpg -K --with-colons 2>/dev/null | awk -F : '$1 == "sec" { print $5 }')
+    if (( $#ssh_keys > 0 )) || (( $#gpg_keys > 0 )); then
+	  alias run_agents='() { $(whence -p keychain) --quiet --eval --inherit any-once --agents ssh,gpg $ssh_keys ${(f)gpg_keys} }'
+	  #[[ -t ${fd:-0} || -p /dev/stdin ]] && eval `run_agents`
+	  unalias run_agents
+    fi
+  fi
+}
+
 showoptions() {                                                                                                                                                                                                     
   local k                                                                                                                                                                                                           
   zmodload -i zsh/parameter                                                                                                                                                                                         

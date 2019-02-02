@@ -13,3 +13,6 @@
 !views/*
 !*.js
 !*.json
+docker-compose.yml
+Dockerfile
+bin/macos

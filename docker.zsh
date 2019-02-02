@@ -2,6 +2,12 @@
 # Docker alias and function
 # ------------------------------------
 
+# delete all images, containers, cache, builds ...
+alias docker-prune-all="docker system prune --all && docker image prune -a"
+
+alias dcup="docker-compose up -d"
+alias dcstop="docker-compose stop"
+
 # Get latest container ID
 alias dl="docker ps -l -q"
 
@@ -25,6 +31,9 @@ alias dki="docker run -i -t -P"
 
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="docker exec -i -t"
+
+# docker ps
+alias dps="docker ps"
 
 # Stop all containers
 dstop() { docker stop $(docker ps -a -q); }

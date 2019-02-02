@@ -81,3 +81,27 @@ bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
+
+# https://github.com/sickill/dotfiles/blob/master/.zsh.d/key-bindings.zsh
+tcsh-backward-word () {
+  local WORDCHARS="${WORDCHARS:s#./#}"
+  zle emacs-backward-word
+}
+zle -N tcsh-backward-word
+bindkey '\e[1;3D' tcsh-backward-word
+bindkey '\e^[[D' tcsh-backward-word # tmux
+
+tcsh-forward-word () {
+  local WORDCHARS="${WORDCHARS:s#./#}"
+  zle emacs-forward-word
+}
+zle -N tcsh-forward-word
+bindkey '\e[1;3C' tcsh-forward-word
+bindkey '\e^[[C' tcsh-backward-word # tmux
+
+tcsh-backward-delete-word () {
+  local WORDCHARS="${WORDCHARS:s#./#}"
+  zle backward-delete-word
+}
+zle -N tcsh-backward-delete-word
+bindkey "^[^?" tcsh-backward-delete-word # urxvt

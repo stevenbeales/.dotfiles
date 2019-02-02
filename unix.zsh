@@ -22,3 +22,5 @@ alias sudo='sudo '
 alias top="htop"
 #resume downloads
 alias wget='wget -c'
+# Enhanced WHOIS lookups
+alias whois="whois -h whois-servers.net"

@@ -81,6 +81,8 @@ setopt PUSHD_TO_HOME
 # ignore dupes on directory stack
 setopt PUSHD_IGNORE_DUPS
 
+setopt PUSHD_MINUS 
+
 # allow embedding single in double quotes
 setopt RC_QUOTES
 

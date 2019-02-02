@@ -5,6 +5,8 @@ export CLICOLOR=1
 
 export EDITOR="code -w"
 
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --color=dark,bg+:235,hl+:10,pointer:5'
+
 export GITHUB_USER="stevenbeales"
 
 export HOMEBREW_NO_ANALYTICS=1
@@ -15,6 +17,9 @@ export LANG=en_US.UTF-8
 
 export LSCOLORS='Exfxcxdxbxegedabagacad'
 export LS_COLORS='di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'  
+
+# improved less option
+export LESS="--tabs=4 --no-init --LONG-PROMPT --ignore-case --quit-if-one-screen --RAW-CONTROL-CHARS"
 
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page"
 
@@ -56,9 +61,16 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
+# Key timeout and character sequences
+KEYTIMEOUT=1
+
 # keep more history
 HISTSIZE=1000
-SAVEHIST=$HISTSIZE
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -68,8 +80,12 @@ HYPHEN_INSENSITIVE="true"
 # 5 seconds
 REPORTTIME=5
 
+SAVEHIST=$HISTSIZE
+
 # watch for everyone but me and root
 watch=(notme root)
+
+WORDCHARS='*?_-[]~=./&;!#$%^(){}<>'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,

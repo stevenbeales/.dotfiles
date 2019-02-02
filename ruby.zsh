@@ -22,15 +22,10 @@ alias gli="gem list"
 alias migrate="rake db:migrate db:test:prepare"
 alias remigrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
 
-
 # Find ruby file
 alias rfind='find . -name "*.rb" | xargs grep -n'
 
 # Functions
-
-rvm-update () {
-	rvm get head
-}
 
 gems () {
 	local current_ruby=`rvm-prompt i v p`
@@ -41,4 +36,8 @@ gems () {
 		-e "s|$(echo $rvm_path)|$fg[magenta]\$rvm_path$reset_color|g" \
 		-e "s/$current_ruby@global/$fg[yellow]&$reset_color/g" \
 		-e "s/$current_ruby$current_gemset$/$fg[green]&$reset_color/g"
+}
+
+rvm-update () {
+	rvm get head
 }

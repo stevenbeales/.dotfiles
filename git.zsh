@@ -16,6 +16,7 @@ alias gsurr='git submodule update --recursive --remote'
 alias glm='git fetch origin master:master'
 alias gr='git reset'
 alias gcopyrev='git rev-parse HEAD | tr -d "\n" | pbcopy'
+alias undopush="git push -f origin HEAD^:master"
 
 # Use Git’s colored diff when available
 hash git &>/dev/null;
