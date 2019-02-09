@@ -26,6 +26,7 @@ cx () {
 	chmod +x $* 
 }
 
+# dictionary 
 dict() {
   grep "$@" /usr/share/dict/words
 }

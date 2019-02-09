@@ -1,72 +1,4 @@
 
-# This hosts file is brought to you by Dan Pollock and can be found at
-# http://someonewhocares.org/hosts/
-# You are free to copy and distribute this file for non-commercial uses,
-# as long the original URL and attribution is included. 
-# 
-# See below for acknowledgements.
-
-# Please forward any additions, corrections or comments by email to
-# hosts@someonewhocares.org
-
-# Last updated: Fri, 18 Jan 2019 at 07:37:13 GMT
-
-# Use this file to prevent your computer from connecting to selected
-# internet hosts. This is an easy and effective way to protect you from 
-# many types of spyware, reduces bandwidth use, blocks certain pop-up 
-# traps, prevents user tracking by way of "web bugs" embedded in spam,
-# provides partial protection to IE from certain web-based exploits and
-# blocks most advertising you would otherwise be subjected to on the 
-# internet. 
-
-# There is a version of this file that uses 0.0.0.0 instead of 127.0.0.1 
-# available at http://someonewhocares.org/hosts/zero/.
-# On some machines this may run minutely faster, however the zero version
-# may not be compatible with all systems. 
-
-# This file must be saved as a text file with no extension. (This means
-# that the file name should be exactly as below, without a ".txt" appended.)
-
-# Let me repeat, the file should be named "hosts" NOT "hosts.txt".
-
-# For Windows 9x and ME place this file at "C:\Windows\hosts"
-# For NT, Win2K and XP use "C:\windows\system32\drivers\etc\hosts"
-#                       or "C:\winnt\system32\drivers\etc\hosts"
-# For Windows 7 and Vista use "C:\windows\system32\drivers\etc\hosts"
-#			or "%systemroot%\system32\drivers\etc\hosts"
-# For Windows 8 and Windows 10 use "C:\Windows\System32\drivers\etc\hosts"
-# 		You may need to tell Windows Defender to ignore this path
-# 		see: http://support.microsoft.com/kb/2764944
-# You may have to use Notepad and "Run as Administrator"
-#
-# For Linux, Unix, or OS X place this file at "/etc/hosts" or on some
-#    systems at "/private/etc/hosts". You will require root access to do
-#    this. Saving this file to "~/hosts" will allow you to run something
-#    like "sudo cp ~/hosts /etc/hosts".
-# For OS/2 copy the file to "%ETC%\HOSTS" and in the CONFIG.SYS file,
-#    ensure that the line "SET USE_HOSTS_FIRST=1" is included.
-# For BeOS place it at "/boot/beos/etc/hosts"
-# On a Netware system, the location is System\etc\hosts"
-# For Macintosh (pre OS X) place it in the Mac System Folder or Preferences
-#    folder and reboot. (something like HD:System Folder:Preferences:Hosts)
-#    Alternatively you can save it elsewhere on your machine, then go to the 
-#    TCP/IP control panel and click on "Select hosts file" to read it in.
-#    ------------------
-#    | As well, note that the format is different on old macs, so
-#    | please visit http://someonewhocares.org/hosts/mac/ for mac format
-# For Android place the file at "/system/etc/hosts". You will need root
-#   access on your device to do this.
-#    ------------------
-# To convert the hosts file to a set of Cisco IOS commands for Cisco routers
-#   use this script by Jesse Baird:
-#   http://jebaird.com/2012/12/21/hosts-to-ip-host-generating-blocked-hosts-from-a-host-file-for-a-cisco-router.html
-
-# If there is a domain name you would rather never see, simply add a line
-# that reads "127.0.0.1 machine.domain.tld". This will have the effect of
-# redirecting any requests to that host to your own computer. For example
-# this will prevent your browser from downloading banner ads, or sending
-# your information back to a company.
-
 #<localhost>
 127.0.0.1	localhost
 127.0.0.1	localhost.localdomain
@@ -1941,7 +1873,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 www.adalyser.com
 127.0.0.1 www.addfreecounter.com
 127.0.0.1 www.addfreestats.com
-127.0.0.1 www.addtoany.com
 127.0.0.1 www.ademails.com
 127.0.0.1 www.admin.iesnare.com
 127.0.0.1 www.admin.iesnare.co.uk
@@ -14130,77 +14061,3 @@ ff02::3		ip6-allhosts
 127.0.0.1 zyrtec.3.p2l.info
 127.0.0.1 zyrtec.4.p2l.info
 #</wiki-spam-sites>
-
-#<Windows10>
-
-# Windows 10 reporting domains. 
-127.0.0.1 a.ads2.msads.net
-127.0.0.1 adnexus.net
-127.0.0.1 aidps.atdmt.com
-127.0.0.1 az361816.vo.msecnd.net
-127.0.0.1 az512334.vo.msecnd.net
-127.0.0.1 b.ads1.msn.com
-127.0.0.1 b.ads2.msads.net
-127.0.0.1 c.atdmt.com
-127.0.0.1 cdn.atdmt.com
-127.0.0.1 cds26.ams9.msecn.net
-127.0.0.1 c.msn.com
-127.0.0.1 db3aqu.atdmt.com
-127.0.0.1 ec.atdmt.com
-127.0.0.1 feedback.microsoft-hohm.com
-127.0.0.1 flex.msn.com
-127.0.0.1 g.msn.com
-127.0.0.1 h1.msn.com
-127.0.0.1 lb1.www.ms.akadns.net
-127.0.0.1 live.rads.msn.com
-127.0.0.1 m.adnxs.com
-127.0.0.1 msnbot-65-55-108-23.search.msn.com
-127.0.0.1 msntest.serving-sys.com
-127.0.0.1 preview.msn.com
-127.0.0.1 reports.wes.df.telemetry.microsoft.com
-127.0.0.1 schemas.microsoft.akadns.net
-127.0.0.1 secure.flashtalking.com
-127.0.0.1 settings-win.data.microsoft.com
-127.0.0.1 sO.2mdn.net
-127.0.0.1 statsfe2.ws.microsoft.com
-127.0.0.1 telemetry.appex.bing.net
-127.0.0.1 v10.vortex-win.data.microsoft.com
-127.0.0.1 vortex-win.data.microsoft.com
-127.0.0.1 wes.df.telemetry.microsoft.com
-#</Windows10>
-
-# Acknowledgements
-# I'd like to thank the following people for submitting sites, and
-# helping promote the site.
-
-# Bill Allison, Harj Basi, Lance Russhing, Marshall Drew-Brook, 
-#  Leigh Brasington, Scott Terbush, Cary Newfeldt, Kaye, Jeff
-#  Scrivener, Mark Hudson, Matt Bells, T. Kim Nguyen, Lino Demasi,
-#  Marcelo Volmaro, Troy Martin, Donald Kerns, B.Patten-Walsh,
-#  bobeangi, Chris Maniscalco, George Gilbert, Kim Nilsson, zeromus,
-#  Robert Petty, Rob Morrison, Clive Smith, Cecilia Varni, OleKing 
-#  Cole, William Jones, Brian Small, Raj Tailor, Richard Heritage,
-#  Alan Harrison, Ordorica, Crimson, Joseph Cianci, sirapacz, 
-#  Dvixen, Matthew Craig, Tobias Hessem, Kevin F. Quinn, Thomas 
-#  Corthals, Chris McBee, Jaime A. Guerra, Anders Josefson, 
-#  Simon Manderson, Spectre Ghost, Darren Tay, Dallas Eschenauer, Cecilia
-#  Varni, Adam P. Cole, George Lefkaditis, grzesiek, Adam Howard, Mike 
-#  Bizon, Samuel P. Mallare, Leinweber, Walter Novak, Stephen Genus, 
-#  Zube, Johny Provoost, Peter Grafton, Johann Burkard, Magus, Ron Karner,
-#  Fredrik Dahlman, Michele Cybula, Bernard Conlu, Riku B, Twillers, 
-#  Shaika-Dzari, Vartkes Goetcherian, Michael McCown, Garth, Richard Nairn,
-#  Exzar Reed, Robert Gauthier, Floyd Wilder, Mark Drissel, Kenny Lyons,
-#  Paul Dunne, Tirath Pannu, Mike Lambert, Dan Kolcun, Daniel Aleksandersen,
-#  Chris Heegard, Miles Golding, Daniel Bisca, Frederic Begou, Charles 
-#  Fordyce, Mark Lehrer, Sebastien Nadeau-Jean, Russell Gordon, Alexey 
-#  Gopachenko, Stirling Pearson, Alan Segal, Bobin Joseph, Chris Wall, Sean
-#  Flesch, Brent Getz, Jerry Cain, Brian Micek, Lee Hancock, Kay Thiele,
-#  Kwan Ting Chan, Wladimir Labeikovsky, Lino Demasi, Bowie Bailey, Andreas 
-#  Marschall, Michael Tompkins, Michael O'Donnell, José Lucas Teixeira
-#  de Oliveira, M. Ömer Gölgeli, and Anthony Gelibert for helping to build 
-#  the hosts file.
-# Russell O'Connor for OS/2 information
-# kwadronaut for Windows 7 and Vista information
-# John Mueller and Lawrence H Smith for Mac Pre-OSX information
-# Jesse Baird for the Cisco IOS script
-Sat Jan 19 15:13:39 2019top

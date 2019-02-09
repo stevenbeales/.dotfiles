@@ -1,7 +1,6 @@
 
 # Shortcuts
 alias c='clear'
-alias ccat='highlight -O ansi'
 alias chm='chmod'
 alias convertCRLF='find ./ -type f -print0 | xargs -0 dos2unix --'
 alias cpi="cp -i"
@@ -12,17 +11,13 @@ alias d='dirs -v | head -10'
 alias e='code .'
 alias ff="find . -iname"
 # File size
-alias fs="stat -f \"%z bytes\""
 alias generate_secret="openssl rand -base64 32"
-# Ctags.
-alias gentags='ctags -R .'
 alias headerc='curl -I --compress'
-alias hosts='sudo $EDITOR /etc/hosts'
+alias hosts='sudo code /etc/hosts'
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 alias j='autojump'
 alias k='kill'
-alias loadsecrets='source ~/.secrets.sh'
 alias localip="ipconfig getifaddr en0"
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -54,11 +49,10 @@ alias x="exit"
 alias yolo="history -c && clear"
 
 # Shortcuts to vimrc and zshrc
-alias loadzsh='source ~/.dotfiles/.zshrc'
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias vimrc='code ~/.dotfiles/.vimrc'
-alias zshconfig="code ~/.zshrc"
-alias zshrc='code ~/.dotfiles/.zshrc'
+alias zshconfig="code ~/dotfiles/.zshrc"
+alias zshrc=zshconfig
 
 alias now='date +"%T"'
 alias nowtime=now
@@ -71,20 +65,8 @@ alias edit='code'
 
 alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
 alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'
-# Intuitive map function
-# For example, to list all directories that contain a certain file:
-# find . -name .gitattributes | map dirname
-alias map="xargs -n1"
 
 alias /quit=exit
 
 alias :q="echo 'you are not in Vi anymore' ; echo ''"
 alias :w="echo 'you are not in Vi anymore' ; echo ''"
-
-# /quick-stat/
-alias atime="stat -c '%X - %x - %n'"
-alias group="stat -c '%G - %g - %n'"
-alias mtime="stat -c '%Y - %y - %n'"
-alias owner="stat -c '%U - %u - %n'"
-
-

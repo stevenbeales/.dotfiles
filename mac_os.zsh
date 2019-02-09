@@ -5,7 +5,6 @@ alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias cop="tr -d '\n' | pbcopy"
 alias cpwd='pwd | pbcopy'
-alias filemerge="open -a '/Developer/Applications/Utilities/FileMerge.app'"
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 # Hide/show all desktop icons (useful when presenting)
@@ -19,7 +18,6 @@ alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killal
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
 alias plistbuddy="/usr/libexec/PlistBuddy"
-alias preview="open -a '$PREVIEW'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias safari="open -a safari"
 
@@ -30,7 +28,6 @@ alias spoton="sudo mdutil -a -i on"
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
-
 alias xcode="open -a '/Developer/Applications/Xcode.app'"
 
 # Show the ~/Library folder
@@ -86,8 +83,8 @@ defaults write com.apple.dock showhidden -bool true
 defaults write com.apple.dock show-process-indicators -bool true
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
-# Set the icon size of Dock items to 35 pixels
-defaults write com.apple.dock tilesize -int 35
+# Set the icon size of Dock items to 70 pixels
+defaults write com.apple.dock tilesize -int 70
 
 # *** Finder
 # Finder: show hidden files by default
@@ -344,9 +341,9 @@ defaults write com.twitter.twitter-mac HideInBackground -bool true
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 50" ~/Library/Preferences/com.apple.finder.plist
 
 # Set the size of icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 24" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 24" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 24" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true

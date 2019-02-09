@@ -58,6 +58,7 @@ git-forget() {
 gitize() { 
 	git init && git add . && git commit -a -m"initial commit" && git gc
 } 
+
 # git commit browser. needs fzf
 log() {
   git log --graph --color=always \

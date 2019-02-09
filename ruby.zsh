@@ -10,6 +10,10 @@ alias be="bundle exec"
 alias bes="bundle exec rspec"
 alias ber="bundle exec rake"
 alias bake="bundle exec rake"
+alias bx='bundle exec'
+alias bo='bundle open'
+alias bl='bundle list'
+alias bs='bundle show'
 
 # Gem Command Shorthands
 alias gi="gem install"
@@ -17,6 +21,9 @@ alias giv="gem install -v"
 alias gin="gem install"
 alias gun="gem uninstall"
 alias gli="gem list"
+alias h='heroku'
+
+alias irb='irb --readline -r irb/completion'
 
 # Migration Shortcuts
 alias migrate="rake db:migrate db:test:prepare"
@@ -24,6 +31,17 @@ alias remigrate="rake db:migrate && rake db:rollback && rake db:migrate && rake 
 
 # Find ruby file
 alias rfind='find . -name "*.rb" | xargs grep -n'
+
+alias ss='script/server'
+alias sr='script/run'
+alias sf='script/fmt'
+alias sb='script/bootstrap'
+alias st='script/test'
+alias sg='script/guard'
+alias sb='script/bootstrap'
+alias sw='script/watch'
+alias sc='script/console'
+alias sm='script/migrate'
 
 # Functions
 
