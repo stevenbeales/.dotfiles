@@ -10,9 +10,9 @@ alias ct="ctags -R --exclude=.git --exclude=node_modules"
 alias d='dirs -v | head -10'
 alias e='code .'
 alias ff="find . -iname"
-# File size
 alias generate_secret="openssl rand -base64 32"
 alias headerc='curl -I --compress'
+alias hg="history | grep"
 alias hosts='sudo code /etc/hosts'
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
@@ -31,6 +31,7 @@ alias o=open
 alias openports="lsof -n -P -i4TCP|grep LISTEN"
 alias p='cat'
 alias path='echo -e ${PATH//:/\\n}'
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias q='exit'
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"

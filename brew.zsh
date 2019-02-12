@@ -5,6 +5,7 @@ alias bstart="brew services start"
 alias bstop="brew services stop"
 alias bslist="brew services list"
 alias bup="brew upgrade && brew cleanup"
+alias bri="brew install"
 alias bru="brew uninstall"
 alias brc="brew cleanup"
 alias brewp='brew pin'

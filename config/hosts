@@ -11334,7 +11334,7 @@ ff02::3		ip6-allhosts
 127.0.0.1 www.adcanadian.com
 127.0.0.1 www.adcash.com
 127.0.0.1 www.addthiscdn.com
-127.0.0.1 www.addthis.com
+# 127.0.0.1 www.addthis.com
 127.0.0.1 www.adengage.com
 127.0.0.1 www.adexchangecloud.com
 127.0.0.1 www.adfactor.nl
