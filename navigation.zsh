@@ -30,10 +30,12 @@ alias lsolddir="command ls -rthdl *(/Om[1,10]) .*(D/Om[1,10])"
 # Navigation Shortcuts
 alias home='cd ~'
 alias dl="cd ~/Downloads"
-alias dotf="cd $HOME/.dotfiles"
+alias dotf="cd $DOTFILES"
+alias dotfiles="cd $DOTFILES"
 alias dtop='cd ~/Desktop'
 alias dbox='cd ~/Dropbox'
 alias gdrive='cd ~/Google\ Drive'
+alias library="cd $HOME/Library"
 alias root='cd /'
 
 alias ..='cd ..'

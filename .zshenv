@@ -3,6 +3,9 @@
 # enable colored output from ls, etc
 export CLICOLOR=1
 
+# Path to your dotfiles installation.
+export DOTFILES=$HOME/.dotfiles
+
 export EDITOR="code -w"
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --color=dark,bg+:235,hl+:10,pointer:5'

@@ -111,6 +111,9 @@ help-zshglob () {
   echo /proc/*/cwd(:h:t:s/self//) # Analogous to >ps ax | awk '{print $1}'<"
 }
 
+# Mirror a website
+alias mirrorsite='wget -m -k -K -E -e robots=off'
+
 #f5# List files which have been modified within the last {\it n} days, {\it n} defaults to 1
 modified () {
     emulate -L zsh
@@ -128,6 +131,20 @@ over_ssh() {
     else
         return 1
     fi
+}
+
+path_append() {
+    path_remove "$1"
+    PATH="${PATH:+"$PATH:"}$1"
+}
+
+path_prepend() {
+    path_remove "$1"
+    PATH="$1${PATH:+":$PATH"}"
+}
+
+path_remove() {
+    PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' |sed 's/:$//')
 }
 
 prepend() { 
@@ -163,6 +180,11 @@ search() {
 
 	GREP_COLORS="ms=01;37:mc=01;37:sl=:cx=01;30:fn=35:ln=32:bn=32:se=36" LC_CTYPE=POSIX \
 	grep -Ri "$1" --line-number --before-context=3 --after-context=3 --color=always --include="$2" --exclude=".*" "$search_path"/*
+}
+
+# Serve current directory
+serve() {
+    ruby -run -e httpd . -p "${1:-8080}"
 }
 
 # CSh compatibility
@@ -235,6 +257,13 @@ targz() {
 	);
 
 	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
+}
+
+# Execute a command in a specific directory
+xin() {
+    (
+        cd "${1}" && shift && ${@}
+    )
 }
 
 # Check if we can read given files and source those we can.

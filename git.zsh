@@ -14,6 +14,7 @@ alias gacp=git-add-commit-push
 alias gsur='git submodule update --recursive'
 alias gsurr='git submodule update --recursive --remote'
 alias glm='git fetch origin master:master'
+alias gnuke="git clean -df && git reset --hard"
 alias gr='git reset'
 alias gcopyrev='git rev-parse HEAD | tr -d "\n" | pbcopy'
 alias undopush="git push -f origin HEAD^:master"

@@ -5,6 +5,7 @@ alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias clearicons="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -seed"
 alias cop="tr -d '\n' | pbcopy"
+alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias cpwd='pwd | pbcopy'
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
