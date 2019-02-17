@@ -18,10 +18,14 @@ To use install zsh and oh-myzsh and place a .zshenv file in your HOME directory 
 ## Configuration
 
 * Globally replace across all files - 
-*    Steven Beales with your FirstName LastName
-*    stevenbeales@gmail.com with your email address
-*    /users/sbeales with your home directory
-*    github.com/stevenbeales with your github URL
+
+     Steven Beales with your FirstName LastName
+     
+     stevenbeales@gmail.com with your email address
+     
+     /users/sbeales with your home directory
+     
+     github.com/stevenbeales with your github URL
 
 ## Optional
 
