@@ -13,6 +13,7 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 # Toggle hidden files in Finder
 alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
+alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
@@ -30,6 +31,7 @@ alias spoton="sudo mdutil -a -i on"
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
+alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 alias xcode="open -a '/Developer/Applications/Xcode.app'"
 
 # Show the ~/Library folder

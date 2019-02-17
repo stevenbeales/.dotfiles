@@ -15,6 +15,14 @@ To use install zsh and oh-myzsh and place a .zshenv file in your HOME directory 
 * brew install fzf
 * brew install tmux
 
+## Configuration
+
+* Globally replace across all files - 
+*    Steven Beales with your FirstName LastName
+*    stevenbeales@gmail.com with your email address
+*    /users/sbeales with your home directory
+*    github.com/stevenbeales with your github URL
+
 ## Optional
 
 Any of these files may be removed if you do not have the following software -

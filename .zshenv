@@ -10,6 +10,8 @@ export EDITOR="code -w"
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --color=dark,bg+:235,hl+:10,pointer:5'
 
+export GIT_EDITOR="$EDITOR"
+
 export GITHUB_USER="stevenbeales"
 
 export HOMEBREW_NO_ANALYTICS=1
