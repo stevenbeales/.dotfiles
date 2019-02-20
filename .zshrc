@@ -23,6 +23,8 @@ for config_file ($ZDOTDIR/*.zsh) source $config_file
 
 # if [ ! -d "${TMP}" ]; then mkdir "${TMP}"; fi
 
+ [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
 # Load SSH and GPG agents via keychain.
 setup_agents
 unfunction setup_agents
