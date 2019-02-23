@@ -1,5 +1,5 @@
-
 # heroku
+alias he='heroku'
 alias hrk='heroku'
 alias hp='git push heroku master'
 alias hl='heroku logs'

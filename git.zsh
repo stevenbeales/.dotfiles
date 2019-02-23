@@ -57,6 +57,12 @@ git-forget() {
   git filter-branch $FORCE_ARG --index-filter "$FILTER_EXP" --prune-empty
 }
 
+gitc () {
+  git add .
+  git commit -m "$1"
+  git push origin master
+}
+
 gitize() { 
 	git init && git add . && git commit -a -m"initial commit" && git gc
 } 

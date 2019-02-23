@@ -1,4 +1,3 @@
-
 # Brew Shortcuts
 alias cask='brew cask'
 alias bstart="brew services start"

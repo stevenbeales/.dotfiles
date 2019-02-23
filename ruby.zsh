@@ -18,7 +18,6 @@ alias gi="gem install"
 alias giv="gem install -v"
 alias gun="gem uninstall"
 alias gli="gem list"
-alias h='heroku'
 
 alias irb='irb --readline -r irb/completion'
 

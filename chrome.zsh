@@ -1,4 +1,3 @@
-
 # Chrome shortcuts
 
 alias chrome='open -a "Google Chrome"'
