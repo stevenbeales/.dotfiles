@@ -9,8 +9,6 @@ alias b="bundle"
 alias be="bundle exec"
 alias bes="bundle exec rspec"
 alias ber="bundle exec rake"
-alias bake="bundle exec rake"
-alias bx='bundle exec'
 alias bo='bundle open'
 alias bl='bundle list'
 alias bs='bundle show'
@@ -18,7 +16,6 @@ alias bs='bundle show'
 # Gem Command Shorthands
 alias gi="gem install"
 alias giv="gem install -v"
-alias gin="gem install"
 alias gun="gem uninstall"
 alias gli="gem list"
 alias h='heroku'

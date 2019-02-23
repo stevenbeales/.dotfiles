@@ -1,4 +1,3 @@
-
 # Vagrant
 alias v="vagrant global-status"
 alias vup="vagrant up"

@@ -9,6 +9,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 # Let there be color in grep!
 alias grep='grep --color=auto --exclude=tags --exclude-dir=.git --exclude-dir=venv'
+alias head='head -n $((${LINES:-`tput lines 2>/dev/null||echo -n 12`} - 2))'
 alias jobs='jobs -l'
 alias man="nocorrect man"
 alias mkdir='nocorrect noglob mkdir'

@@ -293,4 +293,3 @@ _is_command () {
 _alias_if_not_exists() {
   ! _is_command "$1" && alias "$1"="$2"
 }
-

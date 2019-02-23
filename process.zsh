@@ -1,4 +1,3 @@
-
 ## Get top process eating cpu ##
 alias pscpu='ps aux | sort -nr -k 3'
 alias pscpu10='ps aux | sort -nr -k 3 | head -10'

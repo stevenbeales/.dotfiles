@@ -1,4 +1,3 @@
-
 # History Shortcuts
 alias h='history'
 alias h1='history 10'

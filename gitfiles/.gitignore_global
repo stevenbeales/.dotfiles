@@ -1,27 +1,18 @@
-*.o
-.svn
-*~
-*.swp
-~/.dotfiles/secrets.zsh
-.swo
-vim/.netrwhist
-__pycache__/
-Desktop.ini
-svn-commit.*
-tags
-TAGS
-tmtags
-
-# Editor files and folders
-.vscode
 
 # Other dev-related files
 *.bak
 *.orig
 *.sass-cache
 .directory
+.svn
+*~
+~/.dotfiles/secrets.zsh
+.swo
+svn-commit.*
+tmp/
 
 # IDE specific
+.vscode
 dwsync.xml
 *.tmp
 *.wpr
@@ -31,29 +22,34 @@ dwsync.xml
 *.tmproject
 *.vi
 .nbproject
+tags
+TAGS
+tmtags
+.ropeproject/
+.spyderproject
+vim/.netrwhist
 
 # OS generated files #
 ######################
 .DS_Store
 .DS_Store?
-._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
 .AppleDouble
 .LSOverride
+*.swp
 # Icon must end with two \r
 Icon
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
-.Spotlight-V100
 .TemporaryItems
-.Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+Desktop.ini
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -70,43 +66,29 @@ Temporary Items
 *.exe
 *.o
 *.so
+*.out
 
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
-
-# Compiled Python files
+# Python files
+.Python
 *.pyc
 *.pyo 
-
-# Compiled C++ files
-*.out
-
-# Application specific files
-venv
-node_modules
-.sass-cache
-.vscode/
+*.py[cod]
+__pycache__/
+*$py.class
+.webassets-cache
+.scrapy
+.ipynb_checkpoints
+.pynative
 
 # Runtime data
 pids
 *.pid
 *.seed
-
-*.py[cod]
-
-# C extensions
-*.so
 
 # Packages
 *.egg
@@ -119,28 +101,45 @@ var
 sdist
 develop-eggs
 .installed.cfg
+lib
 lib64
-__pycache__
-
-# Installer logs
-pip-log.txt
+*.manifest
 
 # Unit test / coverage reports
+htmlcov/
+.tox/
 .coverage
-.tox
+.coverage.*
+.cache
 nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
 
 # Translations
 *.mo
+*.pot
 
 # Sphinx documentation
 docs/build/
-
+docs/_build/
 .idea/
-*.pyc
 *env/
 .tox/
 dist/
-
 scratch/
 CHANGELOG_DRAFT
+
+# Nodejs
+node_modules/
+npm-debug.log
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtualenv
+venv/
+venvs/
+virtualenv/
+virtualenvs/

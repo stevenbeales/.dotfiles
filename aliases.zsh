@@ -2,13 +2,18 @@
 # Shortcuts
 alias c='clear'
 alias chm='chmod'
+alias conns="netstat -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c"
 alias convertCRLF='find ./ -type f -print0 | xargs -0 dos2unix --'
 alias cpi="cp -i"
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
 alias cs='clear;ls'
 alias ct="ctags -R --exclude=.git --exclude=node_modules"
 alias d='dirs -v | head -10'
+alias diffdirs='diff -urp'
 alias e='code .'
+alias excuse="telnet towel.blinkenlights.nl 666"
+# file extensions in local folder
+alias ext="find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u"
 alias ff="find . -iname"
 alias generate_secret="openssl rand -base64 32"
 alias headerc='curl -I --compress'
@@ -18,6 +23,8 @@ alias hosts='sudo code /etc/hosts'
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 alias j='autojump'
 alias k='kill'
+# top 10 largest files in folder 
+alias largefiles='du -s * | sort -n | tail'
 alias localip="ipconfig getifaddr en0"
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -31,11 +38,13 @@ alias o=open
 alias openports="lsof -n -P -i4TCP|grep LISTEN"
 alias p='cat'
 alias path='echo -e ${PATH//:/\\n}'
+alias printers='lpstat -p'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias q='exit'
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias removeempty="find . -type d -empty -delete"
 alias sha1='openssl sha1'
 alias size="du -h"
 alias t='time'

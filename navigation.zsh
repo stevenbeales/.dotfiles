@@ -1,4 +1,3 @@
-
 # Directory Listing Shortcuts
 alias la='ls -lah'
 alias lad='command ls -d .*(/)'
