@@ -10,3 +10,6 @@ alias yup="yarn upgrade-interactive --latest"
 # npm shortcuts
 alias nis="npm install --save "
 alias npm-list-globals="npm list -g --depth 0"
+
+# Run npm script without annoying noise
+alias nr="npm run --silent"

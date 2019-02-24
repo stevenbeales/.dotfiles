@@ -17,7 +17,7 @@ alias bubu='bubo && bubc'
 # Functions
 
 # Tap Homebrew kegs.
-function brew_tap_kegs() {
+brew_tap_kegs () {
   kegs=($(setdiff "${kegs[*]}" "$(brew tap)"))
   if (( ${#kegs[@]} > 0 )); then
     e_header "Tapping Homebrew kegs: ${kegs[*]}"
@@ -28,7 +28,7 @@ function brew_tap_kegs() {
 }
 
 # Install Homebrew recipes.
-function brew_install_recipes() {
+brew_install_recipes () {
   recipes=($(setdiff "${recipes[*]}" "$(brew list)"))
   if (( ${#recipes[@]} > 0 )); then
     e_header "Installing Homebrew recipes: ${recipes[*]}"

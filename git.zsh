@@ -11,7 +11,7 @@ alias all='git add .'
 alias gbr="git remote prune origin && git branch -r"
 alias gp='git push'
 alias gpom='git push origin master'
-alias gacp=git-add-commit-push
+alias gacp='git-add-commit-push'
 alias gsur='git submodule update --recursive'
 alias gsurr='git submodule update --recursive --remote'
 alias glm='git fetch origin master:master'
@@ -27,6 +27,18 @@ if [ $? -eq 0 ]; then
 		git diff --no-index --color-words "$@";
 	}
 fi;
+
+# don't delete function keyword as it causes an infinte recursion for git
+# git clone and cd to a repo directory
+function clone() {
+  git clone --depth=1 $@
+  if [ "$2" ]; then
+    cd "$2"
+  else
+    cd $(basename "$1" .git)
+  fi
+  npm install
+}
 
 gpb() { git push -u origin "$(git rev-parse --abbrev-ref HEAD)" }
 

@@ -10,7 +10,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-for config_file ($ZDOTDIR/.*.zsh) source $config_file
 for config_file ($ZDOTDIR/*.zsh) source $config_file
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

@@ -14,11 +14,13 @@ alias bl='bundle list'
 alias bs='bundle show'
 
 # Gem Command Shorthands
+alias ge='gem open' # gem install gem-browse
 alias gi="gem install"
 alias giv="gem install -v"
 alias gun="gem uninstall"
 alias gli="gem list"
 
+alias i='irb -rubygems'
 alias irb='irb --readline -r irb/completion'
 
 # Migration Shortcuts
@@ -27,6 +29,10 @@ alias remigrate="rake db:migrate && rake db:rollback && rake db:migrate && rake 
 
 # Find ruby file
 alias rfind='find . -name "*.rb" | xargs grep -n'
+
+alias r='rake'
+alias redstart='redis-server'
+alias rt='rake -T'
 
 alias ss='script/server'
 alias sr='script/run'

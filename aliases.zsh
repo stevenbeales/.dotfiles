@@ -1,4 +1,3 @@
-
 # Shortcuts
 alias c='clear'
 alias chm='chmod'
@@ -16,6 +15,8 @@ alias excuse="telnet towel.blinkenlights.nl 666"
 alias ext="find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u"
 alias ff="find . -iname"
 alias generate_secret="openssl rand -base64 32"
+# Download file and save it with filename of remote file
+alias get="curl -O -L"
 alias headerc='curl -I --compress'
 alias hg="history | grep"
 alias hosts='sudo code /etc/hosts'
@@ -51,7 +52,7 @@ alias t='time'
 alias tlf="tail -f"
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 # A less noisy tree list
-alias tr="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
+alias tre="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
 # Get week number
 alias week='date +%V'
 alias where='which'

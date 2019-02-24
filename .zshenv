@@ -12,7 +12,13 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --color=d
 
 export GIT_EDITOR="$EDITOR"
 
+# Disable bundle for git-friendly
+export GIT_FRIENDLY_NO_BUNDLE=true
+
 export GITHUB_USER="stevenbeales"
+
+# Grep colors
+export GREP_COLOR='1;33'
 
 export HOMEBREW_NO_ANALYTICS=1
 

@@ -1,20 +1,34 @@
+# Prepend $PATH without duplicates
+function _prepend_path() {
+	if ! $( echo "$PATH" | tr ":" "\n" | grep -qx "$1" ) ; then
+		PATH="$1:$PATH"
+	fi
+}
 
+function _append_path() {
+	if ! $( echo "$PATH" | tr ":" "\n" | grep -qx "$1" ) ; then
+		PATH="$PATH:$1"
+	fi
+}
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+_prepend_path '/usr/local/bin' 
+_prepend_path "/usr/local/sbin"
 
 # Load Node global installed binaries
-export PATH="$HOME/.node/bin:$PATH"
- 
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+_prepend_path "$HOME/.node/bin"
 
-export PATH="$HOME/bin:$PATH"
+ _append_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+_prepend_path "$HOME/bin"
 
 # Rails and Ruby uses the local `bin` folder to store binstubs.
 # So instead of running `bin/rails` like the doc says, just run `rails`
 # Same for `./node_modules/.bin` and nodejs
-export PATH="./bin:./node_modules/.bin:${PATH}"
-
-export PATH="/usr/local/heroku/bin:$PATH"
+_prepend_path "./bin"
+_prepend_path "./node_modules/.bin"
+_prepend_path "/usr/local/heroku/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$HOME/.rvm/bin:$PATH:"
+_prepend_path "$HOME/.rvm/bin"
+
+export PATH
