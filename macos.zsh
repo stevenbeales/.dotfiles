@@ -21,6 +21,7 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
 alias plistbuddy="/usr/libexec/PlistBuddy"
 alias pumpitup="osascript -e 'set volume 7'"
+alias restart_syslog="launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist; sleep 1; launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist"
 alias safari="open -a safari"
 
 # Disable Spotlight

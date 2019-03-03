@@ -18,8 +18,6 @@ alias mount='mount |column -t'
 alias mv="nocorrect mv -v"
 alias ping='ping -c 5'
 alias rm='rm -i -v'
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
 alias top="htop"
 #resume downloads
 alias wget='wget -c'

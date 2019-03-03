@@ -10,6 +10,7 @@ alias brc="brew cleanup"
 alias brewp='brew pin'
 alias brews='brew list -1'
 alias brewsp='brew list --pinned'
+alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 alias bubo='brew update && brew outdated'
 alias bubc='brew upgrade && brew cleanup'
 alias bubu='bubo && bubc'

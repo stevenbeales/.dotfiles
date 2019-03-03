@@ -54,6 +54,7 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 # A less noisy tree list
 alias tre="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
 # Get week number
+alias truncate="cp /dev/null"
 alias week='date +%V'
 alias where='which'
 alias x="exit"

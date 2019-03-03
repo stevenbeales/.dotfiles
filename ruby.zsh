@@ -1,3 +1,4 @@
+export RUBYOPT="rubygems"
 
 # Shorthand Ruby
 alias rb="ruby"

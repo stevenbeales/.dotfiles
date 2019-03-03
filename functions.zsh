@@ -58,6 +58,8 @@ fixperms(){
     find . \( -name "*.sh" -or -type d \) -exec chmod 755 {} \; && find . -type f ! -name "*.sh" -exec chmod 644 {} \;
 }
 
+fn() { ls **/*$1* }
+
 getlinks () { 
 	perl -ne 'while ( m/"((www|ftp|http):\/\/.*?)"/gic ) { print $1, "\n"; }' $* 
 }

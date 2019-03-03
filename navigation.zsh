@@ -4,6 +4,7 @@ alias lad='command ls -d .*(/)'
 alias lsa='command ls -a .*(.)'
 alias latest="ls -lt |head"
 alias ll='ls -l'
+alias lll="ll | less"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 #a2# Only show symlinks
 alias lss='command ls -l *(@)'

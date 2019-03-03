@@ -1,4 +1,5 @@
 # Git Shortcuts
+alias git='noglob git'
 alias authors="git log --format='%aN' | sort -u"
 alias g='git'
 alias st='git status'
