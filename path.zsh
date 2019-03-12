@@ -1,15 +1,30 @@
 # Prepend $PATH without duplicates
-function _prepend_path() {
+_prepend_path() {
 	if ! $( echo "$PATH" | tr ":" "\n" | grep -qx "$1" ) ; then
 		PATH="$1:$PATH"
 	fi
 }
 
-function _append_path() {
+_append_path() {
 	if ! $( echo "$PATH" | tr ":" "\n" | grep -qx "$1" ) ; then
 		PATH="$PATH:$1"
 	fi
 }
+
+path_append() {
+    path_remove "$1"
+    PATH="${PATH:+"$PATH:"}$1"
+}
+
+path_prepend() {
+    path_remove "$1"
+    PATH="$1${PATH:+":$PATH"}"
+}
+
+path_remove() {
+    PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' |sed 's/:$//')
+}
+
 
 _prepend_path '/usr/local/bin' 
 _prepend_path "/usr/local/sbin"

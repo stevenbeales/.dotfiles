@@ -1,10 +1,10 @@
- #f5# List files which have been accessed within the last {\it n} days, {\it n} defaults to 1
+# List files which have been accessed within the last {\it n} days, {\it n} defaults to 1
 accessed () {
     emulate -L zsh
     print -l -- *(a-${1:-1})
 }
 
-#f5# Create temporary directory and \kbd{cd} to it
+# Create temporary directory and \kbd{cd} to it
 cdt () {
     builtin cd "$(mktemp -d)"
     builtin pwd
@@ -15,7 +15,7 @@ cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
-#f5# List files which have been changed within the last {\it n} days, {\it n} defaults to 1
+# List files which have been changed within the last {\it n} days, {\it n} defaults to 1
 changed () {
     emulate -L zsh
     print -l -- *(c-${1:-1})
@@ -133,20 +133,6 @@ over_ssh() {
     else
         return 1
     fi
-}
-
-path_append() {
-    path_remove "$1"
-    PATH="${PATH:+"$PATH:"}$1"
-}
-
-path_prepend() {
-    path_remove "$1"
-    PATH="$1${PATH:+":$PATH"}"
-}
-
-path_remove() {
-    PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' |sed 's/:$//')
 }
 
 prepend() { 

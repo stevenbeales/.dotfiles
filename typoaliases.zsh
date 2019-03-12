@@ -1,5 +1,4 @@
 # fix typoes
-
 alias alais='alias'
 alias brwe='brew'
 alias chomd="chmod"

@@ -70,10 +70,8 @@ git-forget() {
   git filter-branch $FORCE_ARG --index-filter "$FILTER_EXP" --prune-empty
 }
 
-gitc () {
-  git add .
-  git commit -m "$1"
-  git push origin master
+gitc() {
+  git add . && git commit -m "$1" && git push origin master
 }
 
 gitize() { 

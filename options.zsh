@@ -1,4 +1,3 @@
-
 # Don't overwrite, append history
 setopt APPEND_HISTORY
 
