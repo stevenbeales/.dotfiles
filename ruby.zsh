@@ -13,6 +13,7 @@ alias ber="bundle exec rake"
 alias bo='bundle open'
 alias bl='bundle list'
 alias bs='bundle show'
+alias bx='bundle exec'
 
 # Gem Command Shorthands
 alias ge='gem open' # gem install gem-browse
@@ -30,21 +31,24 @@ alias remigrate="rake db:migrate && rake db:rollback && rake db:migrate && rake 
 
 # Find ruby file
 alias rfind='find . -name "*.rb" | xargs grep -n'
-
 alias r='rake'
 alias redstart='redis-server'
 alias rt='rake -T'
 
-alias ss='script/server'
-alias sr='script/run'
-alias sf='script/fmt'
-alias sb='script/bootstrap'
-alias st='script/test'
-alias sg='script/guard'
-alias sb='script/bootstrap'
-alias sw='script/watch'
-alias sc='script/console'
-alias sm='script/migrate'
+# Rails
+alias crsp='COVERAGE=true rspec .'
+alias rc='rails console'
+alias rcop='rubocop'
+alias rdb='rails dbconsole'
+alias rddd='brew services restart postgresql; sleep 15; rails db:drop'
+alias rdm='rails db:migrate'
+alias rgm='rails generate migration'
+alias rs='rails server'
+alias rsp='rspec .'
+alias rsr='rails restart'
+alias rtp='rails db:test:prepare'
+alias sst='spring status'
+alias psp='spring stop && DISABLE_SPRING=0 bin/rake parallel:spec'
 
 # Functions
 
