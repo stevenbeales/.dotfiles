@@ -36,20 +36,7 @@ export MANPAGER="less -X" # Don’t clear the screen after quitting a manual pag
 
 export MYCODE="$HOME/code"
 
-export NODE_PATH=/usr/local/lib/node_modules
- 
-export NVM_DIR="$HOME/.nvm"
-
 export PAGER=${PAGER:-less}
-
-# Ruby
-export RUBY_GC_HEAP_INIT_SLOTS=500000
-export RUBY_HEAP_SLOTS_INCREMENT=250000 
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1 
-export RUBY_GC_MALLOC_LIMIT=50000000
-
-export RUBYOPT="-rpp"
-export RUBYLIB="$RUBYLIB:./lib/:./test/"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"

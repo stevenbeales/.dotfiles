@@ -1,3 +1,7 @@
+
+export NODE_PATH=/usr/local/lib/node_modules
+export NVM_DIR="$HOME/.nvm"
+
 # yarn shortcuts
 alias yi="yarn"
 alias yf="yarn --offline"

@@ -8,14 +8,9 @@ alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias cpwd='pwd | pbcopy'
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-# Toggle hidden files in Finder
-alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
 alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
@@ -35,7 +30,7 @@ alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simu
 alias xcode="open -a '/Developer/Applications/Xcode.app'"
 
 # Show the ~/Library folder
-chflags nohidden ~/Library
+chflags nohidden $HOME/Library
 
 # OS X has no `md5sum`, so use `md5` as a fallback
 # command -v md5sum > /dev/null || alias md5sum="md5"
