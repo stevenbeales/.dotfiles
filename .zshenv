@@ -15,6 +15,8 @@ export GIT_EDITOR="$EDITOR"
 # Disable bundle for git-friendly
 export GIT_FRIENDLY_NO_BUNDLE=true
 
+export GIT_PS1_SHOWDIRTYSTATE=1
+
 export GITHUB_USER="stevenbeales"
 
 # Grep colors
