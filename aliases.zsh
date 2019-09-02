@@ -1,4 +1,5 @@
 # Shortcuts
+alias aliases=alias
 alias c='clear'
 alias chm='chmod'
 alias conns="netstat -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c"
