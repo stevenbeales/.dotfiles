@@ -23,7 +23,6 @@ alias hg="history | grep"
 alias hosts='sudo code /etc/hosts'
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
-alias j='autojump'
 alias k='kill'
 # top 10 largest files in folder 
 alias largefiles='du -s * | sort -n | tail'
